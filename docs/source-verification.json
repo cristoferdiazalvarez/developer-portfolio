@@ -1,0 +1,25 @@
+{
+  "profile": {
+    "login": "cristoferdiazalvarez",
+    "name": "Cristofer Díaz ",
+    "email": null,
+    "blog": "",
+    "html_url": "https://github.com/cristoferdiazalvarez",
+    "bio": null
+  },
+  "social": [],
+  "businessos": {
+    "full_name": "cristoferdiazalvarez/businessos-erp",
+    "html_url": "https://github.com/cristoferdiazalvarez/businessos-erp",
+    "homepage": null,
+    "private": false,
+    "default_branch": "main"
+  },
+  "atelier": {
+    "full_name": "cristoferdiazalvarez/atelier-commerce",
+    "html_url": "https://github.com/cristoferdiazalvarez/atelier-commerce",
+    "homepage": "https://atelier-commerce-two.vercel.app",
+    "private": false,
+    "default_branch": "main"
+  }
+}

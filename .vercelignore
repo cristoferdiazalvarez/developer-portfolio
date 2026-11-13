@@ -1,0 +1,12 @@
+.git
+.local
+.vercel
+.env
+.env.*
+!.env.example
+node_modules
+.next
+test-results
+playwright-report
+*.log
+*.tsbuildinfo

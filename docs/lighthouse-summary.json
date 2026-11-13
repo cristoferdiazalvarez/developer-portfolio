@@ -1,0 +1,67 @@
+{
+  "context": "Local production build, single lab run per profile. Not public hosting or field Core Web Vitals.",
+  "reports": {
+    "desktop": {
+      "version": "13.6.0",
+      "fetchTime": "2026-11-13T16:05:36.955Z",
+      "url": "http://localhost:3200/",
+      "scores": {
+        "performance": 100,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100,
+        "agentic-browsing": 100
+      },
+      "metrics": {
+        "first-contentful-paint": {
+          "value": 203.5095,
+          "display": "0.2\u00a0s"
+        },
+        "largest-contentful-paint": {
+          "value": 610.8868749999999,
+          "display": "0.6\u00a0s"
+        },
+        "total-blocking-time": {
+          "value": 0,
+          "display": "0\u00a0ms"
+        },
+        "cumulative-layout-shift": {
+          "value": 0.008670048913875586,
+          "display": "0.009"
+        }
+      },
+      "labelContentNameMismatch": 1
+    },
+    "mobile": {
+      "version": "13.6.0",
+      "fetchTime": "2026-11-13T16:05:47.155Z",
+      "url": "http://localhost:3200/",
+      "scores": {
+        "performance": 94,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100,
+        "agentic-browsing": 100
+      },
+      "metrics": {
+        "first-contentful-paint": {
+          "value": 753.5251000000001,
+          "display": "0.8\u00a0s"
+        },
+        "largest-contentful-paint": {
+          "value": 3106.78765,
+          "display": "3.1\u00a0s"
+        },
+        "total-blocking-time": {
+          "value": 1.5,
+          "display": "0\u00a0ms"
+        },
+        "cumulative-layout-shift": {
+          "value": 0.01214918366858747,
+          "display": "0.012"
+        }
+      },
+      "labelContentNameMismatch": 1
+    }
+  }
+}
