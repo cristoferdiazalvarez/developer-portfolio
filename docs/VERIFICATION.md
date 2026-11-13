@@ -40,5 +40,5 @@ These are local laboratory measurements, not field Core Web Vitals or a guarante
 - Production canonical, hreflang, sitemap entries and absolute social URLs require the actual HTTPS origin in NEXT_PUBLIC_SITE_URL and a rebuild.
 - Next.js emits a metadataBase fallback warning for its built-in unmatched-route metadata when no public origin is configured. Localized content pages have an explicit loopback preview base; no public canonical is invented. Verify the actual generated metadata again after deployment.
 - Email, LinkedIn and an authorized current CV remain unconfirmed and hidden.
-- Host tools used Node 26 while the supported production/CI target is Node 22.x. GitHub Actions is the clean Node 22 verification environment; record its actual result in PROGRESS.md.
+- Host tools used Node 26 while the supported production/CI target is Node 22.x. The clean Node 22 GitHub Actions run passed all checks, including production build and browser tests; its evidence link is recorded in PROGRESS.md.
 - No changes were made to the existing BusinessOS or Atelier Commerce repositories; both had clean Git status during the final read-only check.

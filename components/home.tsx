@@ -83,7 +83,7 @@ export function Home({ locale }: { locale: Locale }) {
               <span className="small-cross" aria-hidden="true">
                 +
               </span>
-              {t.hero.preview}
+              {t.hero.capture}
               <span>01—02</span>
             </div>
             <HoverFrame className="hero-shot business-shot">
@@ -123,10 +123,6 @@ export function Home({ locale }: { locale: Locale }) {
                 <span>E-COMMERCE</span>
               </div>
             </HoverFrame>
-            <p className="hero-capture mono">
-              <span className="capture-dot" />
-              {t.hero.capture}
-            </p>
             <span className="visual-coordinate mono" aria-hidden="true">
               CDA / FULL STACK
             </span>

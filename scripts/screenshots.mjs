@@ -25,6 +25,9 @@ async function capture(path, file) {
     fullPage: true,
     animations: 'disabled',
   });
+  if (file === 'home-desktop') {
+    await page.screenshot({ path: 'docs/screenshots/home-preview.png', animations: 'disabled' });
+  }
   console.log(
     `${file}: ${path}, no horizontal overflow: ${await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)}`,
   );

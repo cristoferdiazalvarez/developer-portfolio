@@ -17,7 +17,7 @@ Acceptance: actual project links/images, no fabricated biography or contacts, wo
 - [x] Complete ES/EN interface and case studies.
 - [x] SEO, responsive/accessibility and production configuration.
 - [x] Local quality checks, dependency/publication review and real screenshots.
-- [ ] Create/push the authorized public repository and verify GitHub Actions.
+- [x] Create/push the authorized public repository and verify GitHub Actions.
 - [x] Prepare an isolated Vercel deployment without creating hosting resources.
 - [ ] Owner approval for hosting creation, then public HTTPS deployment verification.
 

@@ -4,7 +4,7 @@
 
 A bilingual personal portfolio for a Full Stack Developer based in Tenerife, Spain, seeking junior opportunities in Tenerife and remote work from Spain. Built around two real applications, their source code, architectural decisions and honest demo boundaries.
 
-![Spanish home, captured from the production build](docs/screenshots/home-desktop.png)
+![Spanish home, captured from the production build](docs/screenshots/home-preview.png)
 
 ## Experience
 
