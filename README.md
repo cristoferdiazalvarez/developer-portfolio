@@ -16,7 +16,7 @@ A bilingual personal portfolio for a Full Stack Developer based in Tenerife, Spa
 - Localized metadata, generated Open Graph image, Person/CreativeWork structured data, robots and domain-aware sitemap/canonical URLs.
 - No database, authentication, contact-form service or external runtime API.
 
-GitHub is the only confirmed contact channel. Email, LinkedIn and CV links remain hidden until the owner supplies confirmed public details or an authorized current file. Configure them in `lib/config.ts`; do not invent placeholders.
+GitHub and the owner-confirmed LinkedIn profile are available contact channels. Email and CV links remain hidden until the owner supplies confirmed public details or an authorized current file. Configure them in `lib/config.ts`; do not invent placeholders.
 
 ## Stack and architecture
 

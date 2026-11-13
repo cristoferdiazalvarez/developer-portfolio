@@ -12,7 +12,9 @@ afterEach(() => {
 describe('truthful portfolio content and SEO', () => {
   it('offers only confirmed default contact details', () => {
     expect(profile.email).toBeNull();
-    expect(profile.linkedin).toBeNull();
+    expect(profile.linkedin).toBe(
+      'https://www.linkedin.com/in/cristofer-d%C3%ADaz-%C3%A1lvarez-039a693b8/',
+    );
     expect(profile.cv).toBeNull();
     for (const locale of ['es', 'en'] as const)
       expect(contactLinks(locale)).toEqual([
@@ -21,6 +23,7 @@ describe('truthful portfolio content and SEO', () => {
           href: 'https://github.com/cristoferdiazalvarez',
           external: true,
         },
+        { label: 'LinkedIn', href: profile.linkedin, external: true },
       ]);
   });
   it('keeps real projects, complete translations and screenshot files', () => {
@@ -65,6 +68,6 @@ describe('truthful portfolio content and SEO', () => {
   });
   it('escapes structured data script terminators', () => {
     expect(structuredJson({ name: '</script>' })).not.toContain('<');
-    expect(personSchema('es').sameAs).toEqual([profile.github]);
+    expect(personSchema('es').sameAs).toEqual([profile.github, profile.linkedin]);
   });
 });

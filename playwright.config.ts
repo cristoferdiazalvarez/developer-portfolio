@@ -1,9 +1,10 @@
 import { defineConfig, devices } from '@playwright/test';
+const externalBase = process.env.PLAYWRIGHT_BASE_URL;
 export default defineConfig({
   testDir: 'tests/e2e',
   fullyParallel: false,
   workers: 2,
-  use: { baseURL: 'http://localhost:3200', trace: 'retain-on-failure' },
+  use: { baseURL: externalBase || 'http://localhost:3200', trace: 'retain-on-failure' },
   projects: [
     { name: 'desktop', use: { ...devices['Desktop Chrome'], channel: 'chrome' } },
     {
@@ -11,10 +12,12 @@ export default defineConfig({
       use: { ...devices['iPhone 13'], defaultBrowserType: 'chromium', channel: 'chrome' },
     },
   ],
-  webServer: {
-    command: 'npm run start',
-    url: 'http://localhost:3200',
-    reuseExistingServer: !process.env.CI,
-    timeout: 120000,
-  },
+  webServer: externalBase
+    ? undefined
+    : {
+        command: 'npm run start',
+        url: 'http://localhost:3200',
+        reuseExistingServer: !process.env.CI,
+        timeout: 120000,
+      },
 });

@@ -12,7 +12,10 @@ for (const [locale, home, workPath] of [
     await expect(page.getByRole('heading', { level: 1 })).toContainText('Full Stack');
     await expect(page.locator('.project-card')).toHaveCount(2);
     expect(await page.locator('a[href^="mailto:"]').count()).toBe(0);
-    expect(await page.locator('a[href*="linkedin.com"]').count()).toBe(0);
+    await expect(page.getByRole('link', { name: 'LinkedIn', exact: true })).toHaveAttribute(
+      'href',
+      'https://www.linkedin.com/in/cristofer-d%C3%ADaz-%C3%A1lvarez-039a693b8/',
+    );
     await page.locator('.hero-actions a').first().click();
     await expect(page).toHaveURL(/#projects$/);
     await page

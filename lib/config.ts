@@ -7,7 +7,8 @@ export const profile = {
   githubHandle: 'cristoferdiazalvarez',
   location: { es: 'Tenerife, España', en: 'Tenerife, Spain' },
   email: null as string | null,
-  linkedin: null as string | null,
+  linkedin: 'https://www.linkedin.com/in/cristofer-d%C3%ADaz-%C3%A1lvarez-039a693b8/' as
+    string | null,
   cv: null as { href: string; updatedAt: string } | null,
 };
 export function siteUrl() {

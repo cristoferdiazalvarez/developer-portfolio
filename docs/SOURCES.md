@@ -1,6 +1,6 @@
 # Sources and asset provenance
 
-The owner supplied the project URLs and professional identity in the portfolio brief. Public GitHub identity and repository metadata were checked through the official API; the non-sensitive results are in `source-verification.json`. No public email or LinkedIn profile was confirmed. No authorized current CV was supplied.
+The owner supplied the project URLs and professional identity in the portfolio brief. Public GitHub identity and repository metadata were checked through the official API; the non-sensitive results are in `source-verification.json`. The owner subsequently confirmed the LinkedIn profile used in lib/config.ts. No public email or authorized current CV was supplied.
 
 | Local portfolio asset                      | Read-only source asset                                                                                              |
 | ------------------------------------------ | ------------------------------------------------------------------------------------------------------------------- |
