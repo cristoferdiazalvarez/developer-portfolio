@@ -63,7 +63,11 @@ The initial implementation passed 6 Vitest tests and 26 Playwright tests on desk
 
 ## Deployment status
 
-The GitHub repository is the source publication. A new Vercel hosting resource requires separate owner approval and has not been created. The portfolio is **not yet verified at a public HTTPS URL**. [Deployment instructions](docs/DEPLOYMENT.md) describe the exact configuration and post-deploy checks. No paid service or database is needed.
+Live on Vercel Hobby: [Spanish portfolio](https://developer-portfolio-plum-mu.vercel.app) · [English portfolio](https://developer-portfolio-plum-mu.vercel.app/en).
+
+Public HTTPS, all six content pages, localized navigation, mobile/desktop behavior and SEO configuration have been verified. The production browser suite passed all 26 tests. The account remains on the free Hobby plan; no paid service, card or billing activation was used. [Deployment details](docs/DEPLOYMENT.md) · [Public verification evidence](docs/public-verification.json).
+
+The initial production release was deployed from tracked source through Vercel's REST API. The account has no GitHub integration, so repository pushes currently run CI without automatically redeploying production. See deployment documentation before releasing application changes.
 
 ## Project scope and rights
 

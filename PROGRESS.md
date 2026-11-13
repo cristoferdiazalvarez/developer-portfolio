@@ -1,21 +1,31 @@
 # Progress
 
-## Implemented and locally verified
+## Delivered
 
-Independent application in DEVELOPER-PORTFOLIO, with Spanish/English home and two complete localized case studies, responsive editorial design, authentic source screenshots, real demo/repository links, organized stack and confirmed GitHub contact. No employment, education, performance or business history has been fabricated. BusinessOS and Atelier Commerce remain unchanged.
+Public Spanish portfolio: https://developer-portfolio-plum-mu.vercel.app
 
-SEO metadata, generated social image, Person/CreativeWork JSON-LD, domain-aware sitemap/robots, localized 404, error recovery, case loading states, keyboard navigation, mobile dialog and reduced motion are implemented. Optional personal contacts are centralized and hidden until confirmed.
+Complete English version: https://developer-portfolio-plum-mu.vercel.app/en
 
-Lint, formatting, strict typecheck, production build, 6 Vitest tests and 26 Playwright tests passed. No automated axe violations in the selected checks across all six pages in desktop/mobile. Additional small-width reflow and HTTP smoke checks passed. npm audit reported zero vulnerabilities; tracked publication contents were scanned. Lighthouse: desktop performance 100, mobile 94, accessibility/best practices/SEO 100 on both. See docs/VERIFICATION.md for exact scope and remaining mobile LCP limits.
+Public repository: https://github.com/cristoferdiazalvarez/developer-portfolio
 
-Six real portfolio screenshots, source provenance, architecture, contributor/security guidance, CI and Vercel deployment configuration are included.
+Independent Next.js application with six localized content pages, two detailed case studies, authentic screenshots, responsive editorial design, keyboard navigation, mobile dialog, reduced motion, error/loading states and localized 404s. The owner-confirmed LinkedIn profile is visible in both languages and included in Person structured data. Email and CV remain null and hidden.
 
-## Publication
+## Verification
 
-GitHub authenticated identity verified: cristoferdiazalvarez. Created the public repository https://github.com/cristoferdiazalvarez/developer-portfolio with a professional description and topics after the security checks. Implementation commit `665e3fb9e530ecfd85b9ba77ac97dd8ea6c53487` was pushed to main. The clean Node 22 verification passed all checks, including the production build and 24 browser tests: https://github.com/cristoferdiazalvarez/developer-portfolio/actions/runs/43460059417. A final follow-up adds an explicit 320-pixel regression check in both languages, bringing the browser suite to 26 tests. It retains the same verification workflow.
+Lint, formatting, strict typecheck, production build and 6 Vitest tests passed. All 26 Playwright tests passed locally and again against the actual public HTTPS deployment, including desktop, emulated iPhone, 320-pixel reflow, links, languages, keyboard controls and selected axe accessibility checks. No automated violations were found in that scope; this is not a full WCAG certification.
 
-## Requires owner input
+HTTP checks verified all six pages, actual canonical/hreflang/social metadata, six sitemap entries, robots and Open Graph image. Unknown Spanish/English paths return 404. TLS certificate validation passed using TLS 1.3. Production screenshots were saved in docs/screenshots. External link results and public route evidence are recorded in docs. LinkedIn is owner-confirmed; its automated-access restrictions are documented where applicable.
 
-Hosting creation requires the separate confirmation explicitly requested in the portfolio brief. No new Vercel resource, paid service or billing activation has been created. The portfolio is not yet verified at a public HTTPS URL. After approval, create its own Vercel project, set the assigned real domain, redeploy and verify HTTPS/metadata/browser behavior. Exact steps are in docs/DEPLOYMENT.md.
+Implementation commit `1232724284d7bc0acb43cf9ffb47327719836eaa` passed clean Node 22 CI: https://github.com/cristoferdiazalvarez/developer-portfolio/actions/runs/43510145091. Final documentation is maintained in subsequent commits with the same CI workflow.
 
-Email, LinkedIn and current authorized CV are optional remaining personal content; none is invented or necessary to run the portfolio.
+## Hosting and cost boundary
+
+The owner explicitly authorized this independent resource. Vercel project developer-portfolio uses Next.js and Node 22 on the existing Hobby account. Production origin is configured as NEXT_PUBLIC_SITE_URL. No database, paid service, card, billing activation or plan upgrade was introduced. The plan was checked before creation and after deployment. Hobby quotas can pause service if exhausted; no unlimited hosting promise is made.
+
+The deployed application source is commit `1232724284d7bc0acb43cf9ffb47327719836eaa`. This release used the Vercel REST API because the account has no GitHub integration. Automatic deployment on push remains optional future setup; CI already runs on push. Documentation-only commits do not alter the deployed runtime.
+
+BusinessOS and Atelier Commerce were not modified. Vercel project configuration/deployment snapshots for the other projects match before and after this deployment.
+
+## Optional remaining personal content
+
+A confirmed public email and current authorized CV may be added later. Neither is required to use the published portfolio.

@@ -1,0 +1,254 @@
+{
+  "url": "https://developer-portfolio-plum-mu.vercel.app",
+  "tls": "TLSv1.3",
+  "certificateExpires": "Jan 29 11:46:09 2027 GMT",
+  "routes": [
+    {
+      "path": "/",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "lang": "es",
+      "links": [
+        {
+          "rel": "canonical",
+          "href": "https://developer-portfolio-plum-mu.vercel.app"
+        },
+        {
+          "rel": "alternate",
+          "hreflang": "es",
+          "href": "https://developer-portfolio-plum-mu.vercel.app"
+        },
+        {
+          "rel": "alternate",
+          "hreflang": "en",
+          "href": "https://developer-portfolio-plum-mu.vercel.app/en"
+        },
+        {
+          "rel": "alternate",
+          "hreflang": "x-default",
+          "href": "https://developer-portfolio-plum-mu.vercel.app"
+        }
+      ],
+      "og": [
+        {
+          "property": "og:url",
+          "content": "https://developer-portfolio-plum-mu.vercel.app"
+        },
+        {
+          "property": "og:image",
+          "content": "https://developer-portfolio-plum-mu.vercel.app/opengraph-image"
+        }
+      ]
+    },
+    {
+      "path": "/en",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "lang": "en",
+      "links": [
+        {
+          "rel": "canonical",
+          "href": "https://developer-portfolio-plum-mu.vercel.app/en"
+        },
+        {
+          "rel": "alternate",
+          "hreflang": "en",
+          "href": "https://developer-portfolio-plum-mu.vercel.app/en"
+        },
+        {
+          "rel": "alternate",
+          "hreflang": "es",
+          "href": "https://developer-portfolio-plum-mu.vercel.app"
+        },
+        {
+          "rel": "alternate",
+          "hreflang": "x-default",
+          "href": "https://developer-portfolio-plum-mu.vercel.app"
+        }
+      ],
+      "og": [
+        {
+          "property": "og:url",
+          "content": "https://developer-portfolio-plum-mu.vercel.app/en"
+        },
+        {
+          "property": "og:image",
+          "content": "https://developer-portfolio-plum-mu.vercel.app/opengraph-image"
+        }
+      ]
+    },
+    {
+      "path": "/proyectos/businessos",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "lang": "es",
+      "links": [
+        {
+          "rel": "canonical",
+          "href": "https://developer-portfolio-plum-mu.vercel.app/proyectos/businessos"
+        },
+        {
+          "rel": "alternate",
+          "hreflang": "es",
+          "href": "https://developer-portfolio-plum-mu.vercel.app/proyectos/businessos"
+        },
+        {
+          "rel": "alternate",
+          "hreflang": "en",
+          "href": "https://developer-portfolio-plum-mu.vercel.app/en/projects/businessos"
+        },
+        {
+          "rel": "alternate",
+          "hreflang": "x-default",
+          "href": "https://developer-portfolio-plum-mu.vercel.app/proyectos/businessos"
+        }
+      ],
+      "og": [
+        {
+          "property": "og:url",
+          "content": "https://developer-portfolio-plum-mu.vercel.app/proyectos/businessos"
+        },
+        {
+          "property": "og:image",
+          "content": "https://developer-portfolio-plum-mu.vercel.app/opengraph-image"
+        }
+      ]
+    },
+    {
+      "path": "/proyectos/atelier-commerce",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "lang": "es",
+      "links": [
+        {
+          "rel": "canonical",
+          "href": "https://developer-portfolio-plum-mu.vercel.app/proyectos/atelier-commerce"
+        },
+        {
+          "rel": "alternate",
+          "hreflang": "es",
+          "href": "https://developer-portfolio-plum-mu.vercel.app/proyectos/atelier-commerce"
+        },
+        {
+          "rel": "alternate",
+          "hreflang": "en",
+          "href": "https://developer-portfolio-plum-mu.vercel.app/en/projects/atelier-commerce"
+        },
+        {
+          "rel": "alternate",
+          "hreflang": "x-default",
+          "href": "https://developer-portfolio-plum-mu.vercel.app/proyectos/atelier-commerce"
+        }
+      ],
+      "og": [
+        {
+          "property": "og:url",
+          "content": "https://developer-portfolio-plum-mu.vercel.app/proyectos/atelier-commerce"
+        },
+        {
+          "property": "og:image",
+          "content": "https://developer-portfolio-plum-mu.vercel.app/opengraph-image"
+        }
+      ]
+    },
+    {
+      "path": "/en/projects/businessos",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "lang": "en",
+      "links": [
+        {
+          "rel": "canonical",
+          "href": "https://developer-portfolio-plum-mu.vercel.app/en/projects/businessos"
+        },
+        {
+          "rel": "alternate",
+          "hreflang": "en",
+          "href": "https://developer-portfolio-plum-mu.vercel.app/en/projects/businessos"
+        },
+        {
+          "rel": "alternate",
+          "hreflang": "es",
+          "href": "https://developer-portfolio-plum-mu.vercel.app/proyectos/businessos"
+        },
+        {
+          "rel": "alternate",
+          "hreflang": "x-default",
+          "href": "https://developer-portfolio-plum-mu.vercel.app/proyectos/businessos"
+        }
+      ],
+      "og": [
+        {
+          "property": "og:url",
+          "content": "https://developer-portfolio-plum-mu.vercel.app/en/projects/businessos"
+        },
+        {
+          "property": "og:image",
+          "content": "https://developer-portfolio-plum-mu.vercel.app/opengraph-image"
+        }
+      ]
+    },
+    {
+      "path": "/en/projects/atelier-commerce",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "lang": "en",
+      "links": [
+        {
+          "rel": "canonical",
+          "href": "https://developer-portfolio-plum-mu.vercel.app/en/projects/atelier-commerce"
+        },
+        {
+          "rel": "alternate",
+          "hreflang": "en",
+          "href": "https://developer-portfolio-plum-mu.vercel.app/en/projects/atelier-commerce"
+        },
+        {
+          "rel": "alternate",
+          "hreflang": "es",
+          "href": "https://developer-portfolio-plum-mu.vercel.app/proyectos/atelier-commerce"
+        },
+        {
+          "rel": "alternate",
+          "hreflang": "x-default",
+          "href": "https://developer-portfolio-plum-mu.vercel.app/proyectos/atelier-commerce"
+        }
+      ],
+      "og": [
+        {
+          "property": "og:url",
+          "content": "https://developer-portfolio-plum-mu.vercel.app/en/projects/atelier-commerce"
+        },
+        {
+          "property": "og:image",
+          "content": "https://developer-portfolio-plum-mu.vercel.app/opengraph-image"
+        }
+      ]
+    },
+    {
+      "path": "/robots.txt",
+      "status": 200,
+      "contentType": "text/plain; charset=utf-8"
+    },
+    {
+      "path": "/sitemap.xml",
+      "status": 200,
+      "contentType": "application/xml"
+    },
+    {
+      "path": "/opengraph-image",
+      "status": 200,
+      "contentType": "image/png"
+    },
+    {
+      "path": "/missing-route",
+      "status": 404,
+      "contentType": "text/html; charset=utf-8"
+    },
+    {
+      "path": "/en/missing-route",
+      "status": 404,
+      "contentType": "text/html; charset=utf-8"
+    }
+  ]
+}

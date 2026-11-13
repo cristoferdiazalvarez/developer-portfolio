@@ -34,11 +34,12 @@ Lighthouse exposed a brief footer shift caused by a root loading boundary. Loadi
 
 These are local laboratory measurements, not field Core Web Vitals or a guarantee of public-network performance. The simulated mobile LCP remains above the 2.5-second good threshold. Test the actual deployment before making public performance claims. Axe and keyboard tests support the WCAG 2.2 AA goal but do not certify full conformance or cover every assistive technology.
 
-## Remaining boundaries
+## Public deployment verification
 
-- No portfolio hosting resource or public URL has been created; the owner must approve hosting creation first.
-- Production canonical, hreflang, sitemap entries and absolute social URLs require the actual HTTPS origin in NEXT_PUBLIC_SITE_URL and a rebuild.
-- Next.js emits a metadataBase fallback warning for its built-in unmatched-route metadata when no public origin is configured. Localized content pages have an explicit loopback preview base; no public canonical is invented. Verify the actual generated metadata again after deployment.
-- Email, LinkedIn and an authorized current CV remain unconfirmed and hidden.
-- Host tools used Node 26 while the supported production/CI target is Node 22.x. The clean Node 22 GitHub Actions run passed all checks, including production build and browser tests; its evidence link is recorded in PROGRESS.md.
-- No changes were made to the existing BusinessOS or Atelier Commerce repositories; both had clean Git status during the final read-only check.
+The owner authorized hosting creation after local delivery. The portfolio is now public at https://developer-portfolio-plum-mu.vercel.app. The production Playwright suite passed all 26 tests on desktop Chrome and emulated iPhone, including both languages, all cases, keyboard navigation, links, actual images and 320-pixel reflow. Public HTTP checks verified all six content pages, correct language/canonical/hreflang metadata, sitemap entries, robots, social image, localized 404s and a valid TLS certificate. See public-verification.json. Latest screenshots were captured from the public deployment, not a mockup.
+
+LinkedIn was explicitly confirmed by the owner and is included in the contact links and Person schema. Email and an authorized current CV remain absent. External link HTTP results are in external-link-verification.json; sites may restrict automated clients independently of the portfolio link's correctness.
+
+The account remained on Vercel Hobby, with no card, billing activation or paid service. Snapshot comparison confirmed the other Vercel projects were unchanged. The source commit passed the clean Node 22 workflow linked in PROGRESS.md. Automatic Git-based redeployment is not enabled because the Vercel account has no GitHub integration; the initial release used the REST API.
+
+The Lighthouse scores above remain the earlier local lab measurements, not public-network or field measurements. Public hosting/browser verification is recorded separately. No field Core Web Vitals claim is made.

@@ -1,0 +1,57 @@
+[
+  {
+    "url": "https://github.com/cristoferdiazalvarez",
+    "status": 200,
+    "finalUrl": "https://github.com/cristoferdiazalvarez"
+  },
+  {
+    "url": "https://businessos-web-five.vercel.app/",
+    "status": 200,
+    "finalUrl": "https://businessos-web-five.vercel.app/"
+  },
+  {
+    "url": "https://github.com/cristoferdiazalvarez/businessos-erp",
+    "status": 200,
+    "finalUrl": "https://github.com/cristoferdiazalvarez/businessos-erp"
+  },
+  {
+    "url": "https://atelier-commerce-two.vercel.app/",
+    "status": 200,
+    "finalUrl": "https://atelier-commerce-two.vercel.app/"
+  },
+  {
+    "url": "https://github.com/cristoferdiazalvarez/atelier-commerce",
+    "status": 200,
+    "finalUrl": "https://github.com/cristoferdiazalvarez/atelier-commerce"
+  },
+  {
+    "url": "https://www.linkedin.com/in/cristofer-d%C3%ADaz-%C3%A1lvarez-039a693b8/",
+    "status": 999,
+    "note": "LinkedIn restricts automated profile access; destination explicitly confirmed by owner."
+  },
+  {
+    "url": "https://github.com/cristoferdiazalvarez/developer-portfolio",
+    "status": 200,
+    "finalUrl": "https://github.com/cristoferdiazalvarez/developer-portfolio"
+  },
+  {
+    "url": "https://github.com/cristoferdiazalvarez/businessos-erp/blob/main/docs/architecture.md",
+    "status": 200,
+    "finalUrl": "https://github.com/cristoferdiazalvarez/businessos-erp/blob/main/docs/architecture.md"
+  },
+  {
+    "url": "https://github.com/cristoferdiazalvarez/businessos-erp/actions",
+    "status": 200,
+    "finalUrl": "https://github.com/cristoferdiazalvarez/businessos-erp/actions"
+  },
+  {
+    "url": "https://github.com/cristoferdiazalvarez/atelier-commerce/blob/main/docs/ARCHITECTURE.md",
+    "status": 200,
+    "finalUrl": "https://github.com/cristoferdiazalvarez/atelier-commerce/blob/main/docs/ARCHITECTURE.md"
+  },
+  {
+    "url": "https://github.com/cristoferdiazalvarez/atelier-commerce/actions",
+    "status": 200,
+    "finalUrl": "https://github.com/cristoferdiazalvarez/atelier-commerce/actions"
+  }
+]
