@@ -320,6 +320,7 @@ em {
   min-height: 500px;
 }
 .hero-copy {
+  min-width: 0;
   position: relative;
   z-index: 2;
 }
@@ -2399,5 +2400,17 @@ em {
   .project-card:hover .project-image-frame img,
   .button.primary:hover {
     transform: none;
+  }
+}
+
+@media (max-width: 380px) {
+  .hero-actions > .button {
+    padding: 12px 10px;
+    gap: 10px;
+  }
+  .hero-actions > .icon-link {
+    flex-shrink: 0;
+    width: 42px;
+    height: 42px;
   }
 }

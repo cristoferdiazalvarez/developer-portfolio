@@ -7,7 +7,7 @@ Checked on 2026-11-13 against the local production build on port 3200.
 | Prettier, ESLint, strict TypeScript | Passed                                                                                                               |
 | Next.js production build            | Passed; six prerendered content pages                                                                                |
 | Vitest                              | 6 tests passed                                                                                                       |
-| Playwright                          | 24 tests passed in Chrome desktop and emulated iPhone                                                                |
+| Playwright                          | 26 tests passed in Chrome desktop and emulated iPhone                                                                |
 | Automated axe accessibility         | No violations for selected WCAG 2 A/AA, 2.1 A/AA and 2.2 AA tags on all six content routes in both viewports         |
 | Additional reflow checks            | No horizontal overflow at widths 320, 360 and 768 on ES/EN home and representative cases; no uncaught browser errors |
 | Images                              | Real production-build captures saved for Spanish/English desktop, mobile home and both project cases                 |

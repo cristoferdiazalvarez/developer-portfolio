@@ -52,7 +52,7 @@ The publication scanner checks tracked files, so run it after `git add` when add
 
 ## Validation
 
-The initial implementation passed 6 Vitest tests and 24 Playwright tests on desktop and mobile, including 12 automated accessibility/overflow checks across both languages and all case studies. Automated axe checks support the WCAG 2.2 AA goal; they do not certify full conformance. See [verification](docs/VERIFICATION.md) and [progress](PROGRESS.md) for the final checks and limits.
+The initial implementation passed 6 Vitest tests and 26 Playwright tests on desktop and mobile, including 12 automated accessibility/overflow checks across both languages and all case studies. Automated axe checks support the WCAG 2.2 AA goal; they do not certify full conformance. See [verification](docs/VERIFICATION.md) and [progress](PROGRESS.md) for the final checks and limits.
 
 <details>
 <summary>Mobile screenshot</summary>

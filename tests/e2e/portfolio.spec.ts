@@ -131,3 +131,19 @@ test('external controls have real destinations and image assets load', async ({ 
   expect(sitemap.ok()).toBe(true);
   expect(await sitemap.text()).not.toContain('localhost');
 });
+
+test('narrow screens retain readable Spanish and English actions after fonts load', async ({
+  page,
+}) => {
+  await page.setViewportSize({ width: 320, height: 844 });
+  for (const path of ['/', '/en']) {
+    await page.goto(path);
+    await page.evaluate(() => document.fonts.ready);
+    expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(
+      true,
+    );
+    for (const action of await page.locator('.hero-actions a').all()) {
+      await expect(action).toBeInViewport();
+    }
+  }
+});
