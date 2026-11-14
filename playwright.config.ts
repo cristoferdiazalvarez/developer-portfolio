@@ -8,6 +8,15 @@ export default defineConfig({
   projects: [
     { name: 'desktop', use: { ...devices['Desktop Chrome'], channel: 'chrome' } },
     {
+      name: 'tablet',
+      use: {
+        ...devices['Desktop Chrome'],
+        channel: 'chrome',
+        viewport: { width: 820, height: 1180 },
+        hasTouch: true,
+      },
+    },
+    {
       name: 'mobile',
       use: { ...devices['iPhone 13'], defaultBrowserType: 'chromium', channel: 'chrome' },
     },

@@ -33,3 +33,9 @@ There are no migrations or application seeds. All portfolio text is static, and 
 ## Free-tier snapshot
 
 Official documentation checked on 2026-11-13 lists Hobby as free, with 100 GB fast transfer, 1 million CDN requests and 5,000 image transformations included monthly, plus up to 200 projects and 100 deployments per day. Quotas apply to the account/team and are shared with its other usage. Exceeding a free-tier quota can pause the relevant feature; it is not an unlimited service. This portfolio does not require storage or a database. These figures describe current published allowances, not measured consumption or a promise of future availability. Sources: [Hobby plan](https://vercel.com/docs/plans/hobby), [limits](https://vercel.com/docs/limits).
+
+## FlowTeam candidate — pending review, no production release
+
+The `feat/add-flowteam` branch adds the third published application to the portfolio. It generates eight content routes (home plus three cases per locale), with FlowTeam at `/proyectos/flowteam` and `/en/projects/flowteam`, and 57 browser checks across desktop/tablet/mobile. The original release evidence above describes the two-case production version, not this candidate.
+
+This work authorizes only a feature-branch push and pull request. No merge, Vercel deployment, hosting configuration change, resource creation, paid service or billing change is authorized/performed for the candidate. After separate approval to publish, release the reviewed portfolio commit through the existing project, then verify eight routes, eight sitemap entries, the three-case cycle and both locales. Never deploy the BusinessOS, Atelier or FlowTeam repositories as part of a portfolio update.

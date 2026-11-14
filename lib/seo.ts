@@ -2,8 +2,8 @@ import type { Metadata } from 'next';
 import { profile, siteUrl, homePath, projectPath, type Locale } from './config';
 import type { Project } from './projects';
 const description = {
-  es: 'Cristofer Díaz Álvarez, Full Stack Developer en Tenerife. Proyectos reales con Next.js, NestJS, TypeScript y PostgreSQL. Disponible para oportunidades junior y remoto desde España.',
-  en: 'Cristofer Díaz Álvarez, Full Stack Developer in Tenerife. Real projects built with Next.js, NestJS, TypeScript and PostgreSQL. Open to junior roles and remote work from Spain.',
+  es: 'Cristofer Díaz Álvarez, Full Stack Developer en Tenerife. Tres aplicaciones publicadas: BusinessOS, Atelier Commerce y FlowTeam, con Next.js, TypeScript y PostgreSQL.',
+  en: 'Cristofer Díaz Álvarez, Full Stack Developer in Tenerife. Three published applications: BusinessOS, Atelier Commerce and FlowTeam, built with Next.js, TypeScript and PostgreSQL.',
 };
 export function pageMetadata(locale: Locale, project?: Project): Metadata {
   const base = siteUrl();
@@ -43,10 +43,10 @@ export function pageMetadata(locale: Locale, project?: Project): Metadata {
             url: `${base}${path}`,
             images: [
               {
-                url: `${base}/opengraph-image`,
-                width: 1200,
-                height: 630,
-                alt: `${profile.name} — Full Stack Developer`,
+                url: `${base}${project?.social?.src ?? '/opengraph-image'}`,
+                width: project?.social?.width ?? 1200,
+                height: project?.social?.height ?? 630,
+                alt: project?.social?.alt[locale] ?? `${profile.name} — Full Stack Developer`,
               },
             ],
           }
@@ -56,7 +56,7 @@ export function pageMetadata(locale: Locale, project?: Project): Metadata {
       card: 'summary_large_image',
       title,
       description: summary,
-      ...(base ? { images: [`${base}/opengraph-image`] } : {}),
+      ...(base ? { images: [`${base}${project?.social?.src ?? '/opengraph-image'}`] } : {}),
     },
     robots: { index: true, follow: true },
     icons: { icon: '/icon.svg' },
@@ -87,6 +87,7 @@ export function workSchema(project: Project, locale: Locale) {
     inLanguage: locale,
     author: { '@type': 'Person', name: profile.name, url: profile.github },
     keywords: project.tech.join(', '),
+    ...(base ? { image: `${base}${project.image}` } : {}),
   };
 }
 export function structuredJson(value: unknown) {

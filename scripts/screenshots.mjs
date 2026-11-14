@@ -36,9 +36,16 @@ try {
   await capture('/', 'home-desktop');
   await capture('/en', 'home-english');
   await capture('/proyectos/businessos', 'businessos-case-desktop');
+  await capture('/proyectos/flowteam', 'flowteam-case-desktop-es');
+  await capture('/en/projects/flowteam', 'flowteam-case-desktop-en');
+  await page.setViewportSize({ width: 820, height: 1180 });
+  await capture('/', 'home-tablet');
+  await capture('/proyectos/flowteam', 'flowteam-case-tablet');
   await page.setViewportSize({ width: 390, height: 844 });
   await capture('/', 'home-mobile');
   await capture('/proyectos/atelier-commerce', 'atelier-case-mobile');
+  await capture('/proyectos/flowteam', 'flowteam-case-mobile-es');
+  await capture('/en/projects/flowteam', 'flowteam-case-mobile-en');
 } finally {
   await browser.close();
 }

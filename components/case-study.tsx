@@ -3,11 +3,11 @@ import Image from 'next/image';
 import { ArrowLeft, ArrowUpRight, ArrowRight, Github, CheckCircle2 } from 'lucide-react';
 import { copy } from '@/lib/copy';
 import { homePath, projectPath, type Locale } from '@/lib/config';
-import { projects, type Project } from '@/lib/projects';
+import { nextProject, projectCoverAlt, type Project } from '@/lib/projects';
 import { workSchema, structuredJson } from '@/lib/seo';
 export function CaseStudy({ project, locale }: { project: Project; locale: Locale }) {
   const t = copy[locale],
-    next = projects.find((item) => item.slug !== project.slug)!;
+    next = nextProject(project.slug)!;
   const sections = [
     { id: 'overview', label: t.case.overview },
     { id: 'architecture', label: t.case.architecture },
@@ -67,13 +67,7 @@ export function CaseStudy({ project, locale }: { project: Project; locale: Local
           <div className="case-cover-image">
             <Image
               src={project.image}
-              alt={
-                project.slug === 'businessos'
-                  ? project.gallery[0].alt[locale]
-                  : locale === 'es'
-                    ? 'Vista real de la tienda Atelier Commerce'
-                    : 'Actual Atelier Commerce storefront'
-              }
+              alt={projectCoverAlt(project, locale)}
               fill
               priority
               sizes="(max-width: 700px) 92vw, 1280px"
@@ -202,7 +196,7 @@ export function CaseStudy({ project, locale }: { project: Project; locale: Local
                 <ArrowUpRight size={15} />
               </a>
             </div>
-            <p className="mono evidence-date">{t.case.checked}</p>
+            <p className="mono evidence-date">{project.verified?.[locale] ?? t.case.checked}</p>
           </section>
           <section id="gallery" className="case-section">
             <p className="eyebrow">05 / {t.case.gallery}</p>
@@ -212,7 +206,7 @@ export function CaseStudy({ project, locale }: { project: Project; locale: Local
             </h2>
             <div className="case-gallery">
               {project.gallery.map((image) => (
-                <figure key={image.src}>
+                <figure key={image.src} data-layout={image.layout}>
                   <a
                     href={image.src}
                     target="_blank"
