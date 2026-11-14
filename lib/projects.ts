@@ -22,8 +22,11 @@ export type Project = {
   docs: string;
   image: string;
   mobile: string;
-  gallery: { src: string; alt: Localized; caption: Localized; ratio: string }[];
-  tone: 'green' | 'sand';
+  gallery: { src: string; alt: Localized; caption: Localized; ratio: string; layout?: 'mobile' }[];
+  coverAlt?: Localized;
+  verified?: Localized;
+  social?: { src: string; width: number; height: number; alt: Localized };
+  tone: 'green' | 'sand' | 'violet';
 };
 export const projects: Project[] = [
   {
@@ -275,10 +278,202 @@ export const projects: Project[] = [
       },
     ],
   },
+  {
+    slug: 'flowteam',
+    name: 'FlowTeam',
+    number: '03',
+    category: {
+      es: 'SAAS COLABORATIVO · GESTIÓN DE PROYECTOS',
+      en: 'COLLABORATIVE SAAS · PROJECT MANAGEMENT',
+    },
+    subtitle: {
+      es: 'Un espacio compartido para dar forma al siguiente paso.',
+      en: 'A shared space to move the next idea forward.',
+    },
+    summary: {
+      es: 'Una plataforma de proyectos con demo privada por visitante, Kanban persistente, conversaciones de tareas y permisos comprobados en servidor.',
+      en: 'A project workspace with a private demo per visitor, persistent Kanban, task conversations and server-enforced permissions.',
+    },
+    problem: {
+      es: 'Un equipo necesita conectar tareas, contexto y responsables sin perder el trabajo de otra persona. La dificultad no está solo en mover tarjetas: cada consulta debe respetar el workspace, las ediciones simultáneas necesitan detectar conflictos y una demo pública debe permitir explorar sin alterar los datos de otros visitantes.',
+      en: 'Teams need to connect tasks, context and ownership without losing somebody else’s work. Moving cards is only part of the problem: every query must respect workspace boundaries, concurrent edits must detect conflicts, and a public demo must let visitors explore without changing somebody else’s data.',
+    },
+    approach: {
+      es: 'Construí una experiencia compartida de panel, tablero, lista, calendario y detalle de tarea con Next.js y TypeScript. Better Auth gestiona las sesiones; Zod y los permisos del servidor validan las operaciones. Prisma y PostgreSQL conservan tareas, comentarios y actividad. Cada visitante de la demo recibe un workspace independiente con datos ficticios editables y métricas calculadas desde sus registros.',
+      en: 'I built a connected dashboard, board, list, calendar and task-detail experience with Next.js and TypeScript. Better Auth manages sessions; Zod and server authorization validate operations. Prisma and PostgreSQL persist tasks, comments and activity. Each demo visitor receives an independent workspace with editable fictional data and metrics calculated from its records.',
+    },
+    scope: {
+      es: 'Interfaz, sesiones, equipos, Kanban, API, datos y verificación.',
+      en: 'Interface, sessions, teams, Kanban, API, data and verification.',
+    },
+    tech: [
+      'Next.js',
+      'React',
+      'TypeScript',
+      'PostgreSQL',
+      'Prisma',
+      'Better Auth',
+      'TanStack Query',
+      'dnd-kit',
+      'Vitest',
+      'Playwright',
+      'GitHub Actions',
+    ],
+    features: {
+      es: [
+        'Workspaces privados, roles e invitaciones',
+        'Kanban persistente con control de versión',
+        'Comentarios, checklist y adjuntos privados',
+      ],
+      en: [
+        'Private workspaces, roles and invitations',
+        'Persistent Kanban with version checks',
+        'Comments, checklists and private attachments',
+      ],
+    },
+    architecture: ['Browser', 'Next.js + Better Auth', 'Prisma', 'PostgreSQL'],
+    decisions: [
+      {
+        title: {
+          es: 'Una demo aislada y permisos reales',
+          en: 'An isolated demo with real permissions',
+        },
+        body: {
+          es: 'Cada visitante obtiene una identidad de invitado y un workspace propio. OWNER, ADMIN y MEMBER se comprueban en servidor; conocer el ID o el enlace de una tarea no concede acceso. Las invitaciones usan tokens seguros, caducan y pueden revocarse.',
+          en: 'Each visitor gets a guest identity and a private workspace. OWNER, ADMIN and MEMBER checks run on the server; knowing a task ID or link does not grant access. Invitations use secure tokens, expire and can be revoked.',
+        },
+      },
+      {
+        title: {
+          es: 'Colaboración por HTTP, con un coste explicado',
+          en: 'HTTP collaboration with an explicit cost model',
+        },
+        body: {
+          es: 'TanStack Query consulta los datos mediante polling cada 3 segundos mientras la pestaña está activa. No es WebSockets ni actualización instantánea. Una pestaña activa genera unas 1.200 peticiones por hora, además de autenticación y acciones; puede mantener PostgreSQL despierto y consumir las cuotas gratuitas de cómputo y transferencia.',
+          en: 'TanStack Query polls data over HTTP every 3 seconds while the tab is active. This is not WebSockets or instant push. One active tab generates about 1,200 requests per hour, plus authentication and actions; it can keep PostgreSQL awake and consume free compute and transfer allowances.',
+        },
+      },
+      {
+        title: {
+          es: 'Detectar conflictos y conservar el orden',
+          en: 'Detect conflicts and preserve ordering',
+        },
+        body: {
+          es: 'Las ediciones y movimientos requieren la versión observada de la tarea. Una escritura obsoleta recibe un conflicto en lugar de sobrescribir cambios silenciosamente. Las transacciones y los bloqueos de proyecto mantienen el orden del tablero; la interfaz revierte un movimiento optimista si falla la persistencia.',
+          en: 'Edits and moves require the task’s observed version. A stale write returns a conflict instead of silently overwriting changes. Transactions and project locks preserve board order; the interface rolls back an optimistic move if persistence fails.',
+        },
+      },
+      {
+        title: {
+          es: 'Archivos privados dentro de un presupuesto de demo',
+          en: 'Private files within a demo-sized budget',
+        },
+        body: {
+          es: 'En Vercel, los adjuntos pequeños se guardan en PostgreSQL y se descargan solo después de comprobar la membresía. Las cuotas transaccionales limitan cada archivo a 1 MiB, cada workspace a 5 MiB y el total binario a 100 MiB. Evita otro proveedor, a cambio de consumir espacio y transferencia de la base gratuita.',
+          en: 'On Vercel, small attachments live in PostgreSQL and downloads require a membership check. Transactional quotas cap files at 1 MiB, each workspace at 5 MiB and total binary data at 100 MiB. This avoids another provider while consuming space and transfer from the free database.',
+        },
+      },
+    ],
+    results: {
+      es: [
+        'Demo HTTPS utilizable sin formulario de registro ni tarjeta, con datos ficticios privados por visitante.',
+        '6 pruebas unitarias, 12 de integración y 11 escenarios E2E; los 11 también pasan contra HTTPS, sin omisiones móviles.',
+        'Sincronización comprobada entre dos usuarios con sesiones distintas; roles, persistencia y descargas privadas verificados.',
+        'GitHub Actions en verde y capturas auténticas de producción.',
+      ],
+      en: [
+        'An HTTPS demo usable without a registration form or card, with private fictional data per visitor.',
+        '6 unit tests, 12 integration tests and 11 E2E scenarios; all 11 also pass against HTTPS, with no mobile skips.',
+        'Synchronization checked with two users and distinct sessions; roles, persistence and private downloads verified.',
+        'Passing GitHub Actions and authentic production screenshots.',
+      ],
+    },
+    limits: {
+      es: 'Es un proyecto de portfolio con personas, equipos y tareas ficticios. La colaboración usa polling cada 3 segundos, no WebSockets; no hay presencia ni coedición instantánea de texto. La entrega de email y la recuperación de contraseña están pendientes. Los adjuntos tienen cuotas de demo y no sustituyen un servicio de archivos grandes. Las cuotas gratuitas pueden agotarse y pausar el servicio.',
+      en: 'This is a portfolio project with fictional people, teams and tasks. Collaboration uses 3-second polling, not WebSockets; presence and instant text coediting are not implemented. Email delivery and password recovery remain pending. Demo-sized attachment quotas do not replace large-file storage. Free allowances can be exhausted and pause service.',
+    },
+    demo: 'https://flowteam-ten.vercel.app',
+    repo: 'https://github.com/cristoferdiazalvarez/flowteam',
+    docs: 'https://github.com/cristoferdiazalvarez/flowteam/blob/main/docs/PORTFOLIO.md',
+    image: '/projects/flowteam-overview.webp',
+    mobile: '/projects/flowteam-mobile.webp',
+    tone: 'violet',
+    coverAlt: {
+      es: 'Panel real de FlowTeam con proyectos, tareas y métricas del workspace ficticio Orbit Studio',
+      en: 'Actual FlowTeam dashboard with projects, tasks and metrics for the fictional Orbit Studio workspace',
+    },
+    verified: {
+      es: 'FlowTeam: verificado en producción el 14 de noviembre de 2026',
+      en: 'FlowTeam: verified in production on 14 November 2026',
+    },
+    social: {
+      src: '/projects/flowteam-social.webp',
+      width: 1200,
+      height: 630,
+      alt: {
+        es: 'Vista auténtica del panel de FlowTeam con datos ficticios de demostración',
+        en: 'Authentic FlowTeam dashboard with fictional demo data',
+      },
+    },
+    gallery: [
+      {
+        src: '/projects/flowteam-board.webp',
+        alt: {
+          es: 'Tablero Kanban real de FlowTeam con columnas, tareas, prioridades y responsables ficticios',
+          en: 'Actual FlowTeam Kanban board with columns, tasks, priorities and fictional assignees',
+        },
+        caption: {
+          es: 'Tablero persistente capturado en la demo HTTPS; los movimientos se guardan en PostgreSQL.',
+          en: 'Persistent board captured from the HTTPS demo; movements are saved in PostgreSQL.',
+        },
+        ratio: '1440 / 1256',
+      },
+      {
+        src: '/projects/flowteam-task.webp',
+        alt: {
+          es: 'Detalle real de una tarea de FlowTeam con conversación y checklist de demostración',
+          en: 'Actual FlowTeam task detail with a demonstration conversation and checklist',
+        },
+        caption: {
+          es: 'Contexto, conversación y checklist en una tarea real de la demo; los datos son ficticios.',
+          en: 'Context, conversation and checklist on an actual demo task; the data is fictional.',
+        },
+        ratio: '1440 / 1423',
+      },
+      {
+        src: '/projects/flowteam-mobile.webp',
+        alt: {
+          es: 'Vista móvil auténtica de FlowTeam con navegación y tablero Kanban de demostración',
+          en: 'Authentic mobile FlowTeam view with navigation and demonstration Kanban board',
+        },
+        caption: {
+          es: 'Recorte del viewport móvil publicado, optimizado para web sin inventar ni reconstruir la interfaz.',
+          en: 'Crop of the published mobile viewport, optimized for the web without generating or reconstructing the interface.',
+        },
+        ratio: '585 / 1266',
+        layout: 'mobile',
+      },
+    ],
+  },
 ];
 export function getProject(slug: string) {
   return projects.find((project) => project.slug === slug);
 }
 export function projectDescription(slug: string, locale: Locale) {
   return getProject(slug)?.summary[locale];
+}
+
+export function nextProject(slug: string) {
+  const index = projects.findIndex((project) => project.slug === slug);
+  return index < 0 ? undefined : projects[(index + 1) % projects.length];
+}
+export function projectCoverAlt(project: Project, locale: Locale) {
+  return (
+    project.coverAlt?.[locale] ??
+    (project.slug === 'businessos'
+      ? project.gallery[0].alt[locale]
+      : locale === 'es'
+        ? 'Vista real de la tienda Atelier Commerce'
+        : 'Actual Atelier Commerce storefront')
+  );
 }

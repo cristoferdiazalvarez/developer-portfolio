@@ -1,0 +1,61 @@
+{
+  "commit": "70dd9f5d934dae50d8c003618e02a7c3a94cbc27",
+  "origin": "https://flowteam-ten.vercel.app",
+  "records": [
+    {
+      "path": "public/projects/flowteam-overview.webp",
+      "source": "https://raw.githubusercontent.com/cristoferdiazalvarez/flowteam/70dd9f5d934dae50d8c003618e02a7c3a94cbc27/docs/screenshots/production/desktop-overview.png",
+      "sourceSha256": "85b09b09bc869a3d451af4cafe7d987f3c74413dd9d9d40f5db516315ad16ff1",
+      "outputSha256": "0a3ef9c338d9c381c7ca3c0a4333068ec4522957c07c0e46ea8c3497bf3fa7ad",
+      "sourceBytes": 340688,
+      "bytes": 54018,
+      "width": 1440,
+      "height": 1000,
+      "processing": "Top 1440×1000 viewport crop and WebP encoding"
+    },
+    {
+      "path": "public/projects/flowteam-board.webp",
+      "source": "https://raw.githubusercontent.com/cristoferdiazalvarez/flowteam/70dd9f5d934dae50d8c003618e02a7c3a94cbc27/docs/screenshots/production/desktop-board.png",
+      "sourceSha256": "912c8f8a5ab917dd78155f2d9a4eaa49231b6e12f70be1549fa1e739141056bd",
+      "outputSha256": "731b31938a187cfeea132f9d4d793cc38f5539c004c3dacf0a94cf58c3ad6366",
+      "sourceBytes": 166116,
+      "bytes": 58944,
+      "width": 1440,
+      "height": 1256,
+      "processing": "WebP encoding; screenshot content preserved"
+    },
+    {
+      "path": "public/projects/flowteam-task.webp",
+      "source": "https://raw.githubusercontent.com/cristoferdiazalvarez/flowteam/70dd9f5d934dae50d8c003618e02a7c3a94cbc27/docs/screenshots/production/desktop-task.png",
+      "sourceSha256": "bb72271141fc85a93ab20e05217f36ce1953dc481e4ba053aad4aef66611183e",
+      "outputSha256": "230fb955150143f11c15819e876d4655bc0ca072304c0eeb0dfc15fa1f54e8ba",
+      "sourceBytes": 180784,
+      "bytes": 40704,
+      "width": 1440,
+      "height": 1423,
+      "processing": "WebP encoding; screenshot content preserved"
+    },
+    {
+      "path": "public/projects/flowteam-mobile.webp",
+      "source": "https://raw.githubusercontent.com/cristoferdiazalvarez/flowteam/70dd9f5d934dae50d8c003618e02a7c3a94cbc27/docs/screenshots/production/mobile-board.png",
+      "sourceSha256": "4f87794063acc2fb485b291e124200cd806864315c7c8cd624160f591ee732a4",
+      "outputSha256": "28bcd14bbf41fc4e177765248c450b66e420c1908373be3fef3c38ff9d4fd19c",
+      "sourceBytes": 292251,
+      "bytes": 36604,
+      "width": 585,
+      "height": 1266,
+      "processing": "Top 390×844 CSS-pixel viewport crop, resized to 585px wide and WebP encoded"
+    },
+    {
+      "path": "public/projects/flowteam-social.webp",
+      "source": "https://raw.githubusercontent.com/cristoferdiazalvarez/flowteam/70dd9f5d934dae50d8c003618e02a7c3a94cbc27/docs/screenshots/production/desktop-overview.png",
+      "sourceSha256": "85b09b09bc869a3d451af4cafe7d987f3c74413dd9d9d40f5db516315ad16ff1",
+      "outputSha256": "3027e41107fad8e96f0fec5ae438e0adc956753beeadccc7b8d63e8e1b7f4bfd",
+      "sourceBytes": 340688,
+      "bytes": 32636,
+      "width": 1200,
+      "height": 630,
+      "processing": "Top-aligned 1200×630 social crop and WebP encoding"
+    }
+  ]
+}

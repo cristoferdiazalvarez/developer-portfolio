@@ -11,6 +11,7 @@ jobs:
     timeout-minutes: 15
     env:
       NEXT_TELEMETRY_DISABLED: '1'
+      NEXT_PUBLIC_SITE_URL: https://developer-portfolio-plum-mu.vercel.app
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4

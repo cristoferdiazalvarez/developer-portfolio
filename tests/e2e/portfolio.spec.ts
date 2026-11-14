@@ -1,5 +1,14 @@
-import { test, expect } from '@playwright/test';
+import { test, expect, type Page } from '@playwright/test';
 import AxeBuilder from '@axe-core/playwright';
+const pageErrors = new WeakMap<Page, string[]>();
+test.beforeEach(async ({ page }) => {
+  const errors: string[] = [];
+  pageErrors.set(page, errors);
+  page.on('pageerror', (error) => errors.push(error.message));
+});
+test.afterEach(async ({ page }) => {
+  expect(pageErrors.get(page)).toEqual([]);
+});
 for (const [locale, home, workPath] of [
   ['es', '/', '/proyectos/'],
   ['en', '/en', '/en/projects/'],
@@ -10,7 +19,7 @@ for (const [locale, home, workPath] of [
     await page.goto(home);
     await expect(page.locator('html')).toHaveAttribute('lang', locale);
     await expect(page.getByRole('heading', { level: 1 })).toContainText('Full Stack');
-    await expect(page.locator('.project-card')).toHaveCount(2);
+    await expect(page.locator('.project-card')).toHaveCount(3);
     expect(await page.locator('a[href^="mailto:"]').count()).toBe(0);
     await expect(page.getByRole('link', { name: 'LinkedIn', exact: true })).toHaveAttribute(
       'href',
@@ -47,6 +56,62 @@ for (const [locale, home, workPath] of [
       page.getByRole('heading', { name: 'Atelier Commerce.', exact: true }),
     ).toBeVisible();
     await expect(page.locator('.case-boundary')).toContainText(/Stripe TEST/);
+    await next.click();
+    await expect(page.getByRole('heading', { name: 'FlowTeam.', exact: true })).toBeVisible();
+    await expect(page.locator('.case-boundary')).toContainText(/polling/);
+    await expect(page.locator('.case-cover img')).toHaveAttribute('alt', /FlowTeam/);
+    await expect(page.locator('.case-gallery figure')).toHaveCount(3);
+    await next.click();
+    await expect(page.getByRole('heading', { name: 'BusinessOS.', exact: true })).toBeVisible();
+  });
+  test(`${locale}: FlowTeam bilingual case, links, sections, metadata and loaded gallery`, async ({
+    page,
+  }) => {
+    await page.goto(`${workPath}flowteam`);
+    await expect(page).toHaveTitle(/FlowTeam/);
+    for (const section of ['overview', 'architecture', 'decisions', 'evidence', 'gallery'])
+      await expect(page.locator('#' + section)).toBeVisible();
+    await expect(page.locator('#decisions')).toContainText(/1[.,]200/);
+    await expect(
+      page.getByRole('link', { name: locale === 'es' ? 'Abrir demo' : 'Open demo', exact: true }),
+    ).toHaveAttribute('href', 'https://flowteam-ten.vercel.app');
+    await expect(
+      page.getByRole('link', {
+        name: locale === 'es' ? 'Explorar repositorio' : 'Explore repository',
+        exact: true,
+      }),
+    ).toHaveAttribute('href', 'https://github.com/cristoferdiazalvarez/flowteam');
+    for (const image of await page.locator('.case-gallery img').all()) {
+      await image.scrollIntoViewIfNeeded();
+      await expect
+        .poll(() =>
+          image.evaluate(
+            (el) => (el as HTMLImageElement).complete && (el as HTMLImageElement).naturalWidth > 0,
+          ),
+        )
+        .toBe(true);
+    }
+    if (await page.locator('link[rel=canonical]').count()) {
+      await expect(page.locator('meta[property="og:image"]').first()).toHaveAttribute(
+        'content',
+        /flowteam-social.webp$/,
+      );
+    }
+    const schema = JSON.parse(
+      (await page.locator('script[type="application/ld+json"]').textContent()) || '{}',
+    );
+    expect(schema.name).toBe('FlowTeam');
+    expect(schema.sameAs).toEqual([
+      'https://flowteam-ten.vercel.app',
+      'https://github.com/cristoferdiazalvarez/flowteam',
+    ]);
+    await page
+      .getByRole('link', {
+        name: locale === 'es' ? 'EN · Read in English' : 'ES · Leer en español',
+      })
+      .click();
+    await expect(page).toHaveURL(locale === 'es' ? '/en/projects/flowteam' : '/proyectos/flowteam');
+    await expect(page.locator('html')).toHaveAttribute('lang', locale === 'es' ? 'en' : 'es');
   });
   test(`${locale}: keyboard skip, navigation and mobile dialog`, async ({ page, isMobile }) => {
     await page.goto(home);
@@ -74,7 +139,12 @@ for (const [locale, home, workPath] of [
       'https://github.com/cristoferdiazalvarez',
     );
   });
-  for (const path of [home, `${workPath}businessos`, `${workPath}atelier-commerce`]) {
+  for (const path of [
+    home,
+    `${workPath}businessos`,
+    `${workPath}atelier-commerce`,
+    `${workPath}flowteam`,
+  ]) {
     test(`${locale}: responsive accessibility ${path}`, async ({ page }) => {
       await page.goto(path);
       await page.locator('h1').waitFor();
@@ -100,23 +170,66 @@ test('reduced motion, truthful metadata and a custom missing-page state', async 
   expect(records.some((r) => r['@type'] === 'Person' && r.name === 'Cristofer Díaz Álvarez')).toBe(
     true,
   );
-  expect(records.filter((r) => r['@type'] === 'CreativeWork')).toHaveLength(2);
+  expect(records.filter((r) => r['@type'] === 'CreativeWork')).toHaveLength(3);
   await page.goto('/a-route-that-does-not-exist');
   await expect(page.getByRole('heading', { level: 1 })).toContainText('Este camino');
   await page.goto('/en/a-route-that-does-not-exist');
   await expect(page.getByRole('heading', { level: 1 })).toContainText('This path');
 });
+for (const locale of ['es', 'en'] as const) {
+  test(`${locale}: all three cards and cases preserve demo/repository destinations`, async ({
+    page,
+  }) => {
+    for (const [slug, name, demo, repo] of [
+      [
+        'businessos',
+        'BusinessOS',
+        'https://businessos-web-five.vercel.app',
+        'https://github.com/cristoferdiazalvarez/businessos-erp',
+      ],
+      [
+        'atelier-commerce',
+        'Atelier Commerce',
+        'https://atelier-commerce-two.vercel.app',
+        'https://github.com/cristoferdiazalvarez/atelier-commerce',
+      ],
+      [
+        'flowteam',
+        'FlowTeam',
+        'https://flowteam-ten.vercel.app',
+        'https://github.com/cristoferdiazalvarez/flowteam',
+      ],
+    ]) {
+      await page.goto(locale === 'es' ? '/' : '/en');
+      const card = page
+        .locator('.project-card')
+        .filter({ has: page.getByRole('heading', { name, exact: true }) });
+      await expect(card.locator('.project-external a').nth(0)).toHaveAttribute('href', demo);
+      await expect(card.locator('.project-external a').nth(1)).toHaveAttribute('href', repo);
+      await card.locator('.case-link').click();
+      await expect(page).toHaveURL((locale === 'es' ? '/proyectos/' : '/en/projects/') + slug);
+      await expect(page.getByRole('heading', { name: name + '.', exact: true })).toBeVisible();
+      const layout = await page.evaluate(() => ({
+        boundary: document.querySelector('.case-boundary')!.getBoundingClientRect().bottom,
+        next: document.querySelector('.next-project')!.getBoundingClientRect().top,
+      }));
+      expect(layout.next).toBeGreaterThanOrEqual(layout.boundary);
+    }
+  });
+}
 test('external controls have real destinations and image assets load', async ({ page }) => {
   await page.goto('/');
   for (const href of [
     'https://businessos-web-five.vercel.app',
     'https://atelier-commerce-two.vercel.app',
+    'https://flowteam-ten.vercel.app',
     'https://github.com/cristoferdiazalvarez/businessos-erp',
     'https://github.com/cristoferdiazalvarez/atelier-commerce',
+    'https://github.com/cristoferdiazalvarez/flowteam',
   ])
     expect(await page.locator(`a[href="${href}"]`).count()).toBeGreaterThan(0);
   const images = page.locator('.hero-visual img');
-  await expect(images).toHaveCount(2);
+  await expect(images).toHaveCount(3);
   await expect
     .poll(() =>
       images.evaluateAll((nodes) =>
@@ -132,7 +245,13 @@ test('external controls have real destinations and image assets load', async ({ 
   expect(await robots.text()).toContain('User-Agent: *');
   const sitemap = await page.request.get('/sitemap.xml');
   expect(sitemap.ok()).toBe(true);
-  expect(await sitemap.text()).not.toContain('localhost');
+  const xml = await sitemap.text();
+  expect(xml).not.toContain('localhost');
+  if (xml.includes('<loc>')) {
+    expect(xml).toContain('/proyectos/flowteam');
+    expect(xml).toContain('/en/projects/flowteam');
+    expect((xml.match(/<loc>/g) || []).length).toBe(8);
+  }
 });
 
 test('narrow screens retain readable Spanish and English actions after fonts load', async ({

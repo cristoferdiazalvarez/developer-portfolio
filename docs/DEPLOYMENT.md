@@ -19,17 +19,23 @@ The first release uploaded tracked runtime source to Vercel's REST API, then cre
 
 The existing Vercel account has no GitHub integration. As a result, GitHub Actions runs on push, but a push alone currently does **not** update production. To enable automatic releases later, connect only cristoferdiazalvarez/developer-portfolio in this project's Git settings after reviewing the integration permissions. This is optional and has not been performed. Alternatively, authenticate to Vercel and deploy this same project using its official CLI/API; confirm Hobby, project identity and tracked publication contents first. Never target the existing application projects or enable a paid option.
 
-After each application release, verify the public origin, /en and four case routes; canonical/hreflang, robots, sitemap, social image, localized 404s and image assets. Run the 26 browser tests against the real domain:
+After approval and release of the three-project candidate, verify the public origin, /en and six case routes; canonical/hreflang, robots, sitemap, social image, localized 404s and image assets. Run the 57 browser tests against the real domain only after that approved release:
 
 ```sh
 PLAYWRIGHT_BASE_URL=https://developer-portfolio-plum-mu.vercel.app npm run test:e2e
 PREVIEW_URL=https://developer-portfolio-plum-mu.vercel.app npm run screenshots
 ```
 
-These commands target the public deployment and do not launch a local server. Current results: 26 tests passed; HTTP/TLS/metadata checks passed. See public-verification.json and VERIFICATION.md.
+These commands target the public deployment and do not launch a local server. Historical November 13 production results: 26 tests passed; HTTP/TLS/metadata checks passed. The current three-project review candidate passes 57 checks locally and remains undeployed. See public-verification.json and VERIFICATION.md.
 
 There are no migrations or application seeds. All portfolio text is static, and the screenshots refer to independently hosted demo applications. No Stripe, authentication or database credentials belong in this project's environment.
 
 ## Free-tier snapshot
 
 Official documentation checked on 2026-11-13 lists Hobby as free, with 100 GB fast transfer, 1 million CDN requests and 5,000 image transformations included monthly, plus up to 200 projects and 100 deployments per day. Quotas apply to the account/team and are shared with its other usage. Exceeding a free-tier quota can pause the relevant feature; it is not an unlimited service. This portfolio does not require storage or a database. These figures describe current published allowances, not measured consumption or a promise of future availability. Sources: [Hobby plan](https://vercel.com/docs/plans/hobby), [limits](https://vercel.com/docs/limits).
+
+## FlowTeam candidate — pending review, no production release
+
+The `feat/add-flowteam` branch adds the third published application to the portfolio. It generates eight content routes (home plus three cases per locale), with FlowTeam at `/proyectos/flowteam` and `/en/projects/flowteam`, and 57 browser checks across desktop/tablet/mobile. The original release evidence above describes the two-case production version, not this candidate.
+
+This work authorizes only a feature-branch push and pull request. No merge, Vercel deployment, hosting configuration change, resource creation, paid service or billing change is authorized/performed for the candidate. After separate approval to publish, release the reviewed portfolio commit through the existing project, then verify eight routes, eight sitemap entries, the three-case cycle and both locales. Never deploy the BusinessOS, Atelier or FlowTeam repositories as part of a portfolio update.

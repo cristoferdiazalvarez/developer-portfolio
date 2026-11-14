@@ -29,3 +29,12 @@ BusinessOS and Atelier Commerce were not modified. Vercel project configuration/
 ## Optional remaining personal content
 
 A confirmed public email and current authorized CV may be added later. Neither is required to use the published portfolio.
+
+## FlowTeam addition — 2026-11-14 review branch
+
+- Located the existing `DEVELOPER-PORTFOLIO` checkout for `cristoferdiazalvarez/developer-portfolio`; clean main, no duplicate created. Working on `feat/add-flowteam` from updated origin/main.
+- Added bilingual project 03 using verified FlowTeam material and published screenshots pinned to its release commit. Preserved the original two project records exactly, including all translations and links (serialized comparison passed).
+- Added a third hero capture, restrained violet project surface, data-driven next-project cycle, accurate cover alt/evidence date and per-project social metadata. Sitemap/static params now yield eight content pages; home JSON-LD lists all three projects.
+- Imported five WebP derivatives (222,906 bytes total) with original/source hashes and documented crop/resize provenance. No fabricated captures or extra service dependency.
+- Expanded Node 22 verification: 9 unit tests and 57 E2E checks, including 24 axe/overflow route checks across desktop/tablet/mobile, both languages, keyboard and gallery loading. All passed after correcting a real percentage-row-gap mobile overlap that blocked next-case clicks. All six external demo/repo links returned 200 via read-only HTTPS GET.
+- Local candidate screenshots updated; existing production verification and Lighthouse JSON retained as historical evidence. No merge or deployment performed. Only portfolio files modified; other three project checkouts and infrastructure were not touched.

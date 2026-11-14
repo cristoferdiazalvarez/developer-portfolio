@@ -30,7 +30,7 @@ export const copy = {
       title: 'Ideas que se convierten',
       italic: 'en aplicaciones.',
       intro:
-        'Dos proyectos completos para explorar mi forma de conectar diseño, lógica de negocio y datos.',
+        'Tres proyectos completos para explorar mi forma de conectar diseño, lógica de negocio y datos.',
       case: 'Explorar el proyecto',
       demo: 'Demo en vivo',
       code: 'Ver código',
@@ -169,7 +169,7 @@ export const copy = {
       eyebrow: '01 / SELECTED WORK',
       title: 'Ideas turned into',
       italic: 'working applications.',
-      intro: 'Two complete projects that show how I connect design, business logic and data.',
+      intro: 'Three complete projects that show how I connect design, business logic and data.',
       case: 'Explore the project',
       demo: 'Live demo',
       code: 'View code',

@@ -45,7 +45,7 @@ export default function Image() {
         }}
       >
         <span>Next.js · TypeScript · PostgreSQL</span>
-        <span>BusinessOS / Atelier Commerce</span>
+        <span>BusinessOS / Atelier Commerce / FlowTeam</span>
       </div>
     </div>,
     { ...size },

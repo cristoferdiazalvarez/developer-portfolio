@@ -1,0 +1,36 @@
+{
+  "checkedAt": "2026-11-14T11:52:27.926840+00:00",
+  "method": "Unauthenticated HTTPS GET only; no demo signups or mutations",
+  "results": [
+    {
+      "url": "https://businessos-web-five.vercel.app",
+      "status": 200,
+      "finalUrl": "https://businessos-web-five.vercel.app"
+    },
+    {
+      "url": "https://atelier-commerce-two.vercel.app",
+      "status": 200,
+      "finalUrl": "https://atelier-commerce-two.vercel.app"
+    },
+    {
+      "url": "https://flowteam-ten.vercel.app",
+      "status": 200,
+      "finalUrl": "https://flowteam-ten.vercel.app"
+    },
+    {
+      "url": "https://github.com/cristoferdiazalvarez/businessos-erp",
+      "status": 200,
+      "finalUrl": "https://github.com/cristoferdiazalvarez/businessos-erp"
+    },
+    {
+      "url": "https://github.com/cristoferdiazalvarez/atelier-commerce",
+      "status": 200,
+      "finalUrl": "https://github.com/cristoferdiazalvarez/atelier-commerce"
+    },
+    {
+      "url": "https://github.com/cristoferdiazalvarez/flowteam",
+      "status": 200,
+      "finalUrl": "https://github.com/cristoferdiazalvarez/flowteam"
+    }
+  ]
+}

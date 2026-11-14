@@ -1,5 +1,7 @@
 # Verification record
 
+For the current three-project review candidate, see [FLOWTEAM_REVIEW.md](FLOWTEAM_REVIEW.md): 9 unit tests, 57 E2E checks, eight localized content routes and new local screenshots. This branch has not been merged or deployed. The record below documents the original November 13 production release.
+
 Checked on 2026-11-13 against the local production build on port 3200.
 
 | Check                               | Result                                                                                                               |

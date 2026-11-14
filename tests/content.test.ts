@@ -1,7 +1,9 @@
 import { describe, it, expect, afterEach } from 'vitest';
 import { existsSync } from 'node:fs';
 import { profile, contactLinks, siteUrl } from '../lib/config';
-import { projects, getProject } from '../lib/projects';
+import { projects, getProject, nextProject, projectCoverAlt } from '../lib/projects';
+import { copy } from '../lib/copy';
+import sitemap from '../app/sitemap';
 import { alternatePath } from '../lib/routes';
 import { pageMetadata, personSchema, workSchema, structuredJson } from '../lib/seo';
 const original = process.env.NEXT_PUBLIC_SITE_URL;
@@ -27,7 +29,7 @@ describe('truthful portfolio content and SEO', () => {
       ]);
   });
   it('keeps real projects, complete translations and screenshot files', () => {
-    expect(projects.map((p) => p.slug)).toEqual(['businessos', 'atelier-commerce']);
+    expect(projects.map((p) => p.slug)).toEqual(['businessos', 'atelier-commerce', 'flowteam']);
     for (const project of projects) {
       expect(project.repo).toMatch(/^https:\/\/github.com\/cristoferdiazalvarez\//);
       expect(project.demo).toMatch(/^https:\/\/.+\.vercel\.app$/);
@@ -65,6 +67,77 @@ describe('truthful portfolio content and SEO', () => {
       'https://portfolio.example/proyectos/businessos',
     );
     expect(workSchema(projects[0], 'en').author.name).toBe(profile.name);
+  });
+  it('cycles through all three projects in order without losing original demo links', () => {
+    expect(projects.map((p) => p.number)).toEqual(['01', '02', '03']);
+    expect(projects.slice(0, 2).map((p) => [p.slug, p.demo, p.repo])).toEqual([
+      [
+        'businessos',
+        'https://businessos-web-five.vercel.app',
+        'https://github.com/cristoferdiazalvarez/businessos-erp',
+      ],
+      [
+        'atelier-commerce',
+        'https://atelier-commerce-two.vercel.app',
+        'https://github.com/cristoferdiazalvarez/atelier-commerce',
+      ],
+    ]);
+    for (const [from, to] of [
+      ['businessos', 'atelier-commerce'],
+      ['atelier-commerce', 'flowteam'],
+      ['flowteam', 'businessos'],
+    ])
+      expect(nextProject(from)?.slug).toBe(to);
+    expect(nextProject('unknown')).toBeUndefined();
+  });
+  it('describes verified FlowTeam tradeoffs and bilingual screenshots accurately', () => {
+    const flow = getProject('flowteam')!;
+    expect(flow.demo).toBe('https://flowteam-ten.vercel.app');
+    expect(flow.repo).toBe('https://github.com/cristoferdiazalvarez/flowteam');
+    for (const locale of ['es', 'en'] as const) {
+      const content = [
+        flow.approach[locale],
+        flow.limits[locale],
+        ...flow.decisions.map((d) => d.body[locale]),
+      ].join(' ');
+      expect(content).toMatch(/polling/i);
+      expect(content).toContain('3');
+      expect(content).toContain(locale === 'es' ? '1.200' : '1,200');
+      expect(projectCoverAlt(flow, locale)).toContain('FlowTeam');
+      expect(projectCoverAlt(flow, locale)).not.toContain('Atelier');
+      expect(flow.gallery.every((i) => i.alt[locale] && i.caption[locale])).toBe(true);
+      expect(copy[locale].work.intro).toMatch(locale === 'es' ? /^Tres/ : /^Three/);
+    }
+    expect(alternatePath('/proyectos/flowteam')).toBe('/en/projects/flowteam');
+    expect(alternatePath('/en/projects/flowteam')).toBe('/proyectos/flowteam');
+  });
+  it('includes FlowTeam in localized canonical/social/schema data and all eight sitemap routes', () => {
+    process.env.NEXT_PUBLIC_SITE_URL = 'https://portfolio.example';
+    const flow = getProject('flowteam')!;
+    for (const locale of ['es', 'en'] as const) {
+      const m = pageMetadata(locale, flow);
+      expect(m.title).toContain('FlowTeam');
+      expect(m.alternates?.canonical).toBe(
+        'https://portfolio.example' +
+          (locale === 'es' ? '/proyectos/flowteam' : '/en/projects/flowteam'),
+      );
+      expect(m.openGraph?.images).toEqual([
+        expect.objectContaining({
+          url: 'https://portfolio.example/projects/flowteam-social.webp',
+          width: 1200,
+          height: 630,
+        }),
+      ]);
+      expect(workSchema(flow, locale)).toMatchObject({
+        name: 'FlowTeam',
+        inLanguage: locale,
+        sameAs: [flow.demo, flow.repo],
+      });
+    }
+    const routes = sitemap().map((r) => r.url);
+    expect(routes).toHaveLength(8);
+    expect(routes).toContain('https://portfolio.example/proyectos/flowteam');
+    expect(routes).toContain('https://portfolio.example/en/projects/flowteam');
   });
   it('escapes structured data script terminators', () => {
     expect(structuredJson({ name: '</script>' })).not.toContain('<');

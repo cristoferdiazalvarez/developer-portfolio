@@ -14,7 +14,7 @@ import {
 } from 'lucide-react';
 import { copy } from '@/lib/copy';
 import { profile, contactLinks, projectPath, type Locale } from '@/lib/config';
-import { projects } from '@/lib/projects';
+import { projects, projectCoverAlt } from '@/lib/projects';
 import { personSchema, workSchema, structuredJson } from '@/lib/seo';
 import { HoverFrame } from './motion';
 const stackIcons = [Braces, Server, Database, GitBranch];
@@ -84,7 +84,9 @@ export function Home({ locale }: { locale: Locale }) {
                 +
               </span>
               {t.hero.capture}
-              <span>01—02</span>
+              <span>
+                {projects[0].number}—{projects.at(-1)!.number}
+              </span>
             </div>
             <HoverFrame className="hero-shot business-shot">
               <div className="hero-shot-image">
@@ -121,6 +123,21 @@ export function Home({ locale }: { locale: Locale }) {
               <div className="hero-shot-caption">
                 <span>Atelier Commerce</span>
                 <span>E-COMMERCE</span>
+              </div>
+            </HoverFrame>
+            <HoverFrame className="hero-shot flowteam-shot">
+              <div className="hero-shot-image">
+                <Image
+                  src={projects[2].image}
+                  alt={projectCoverAlt(projects[2], locale)}
+                  fill
+                  sizes="(max-width: 700px) 42vw, 265px"
+                  quality={80}
+                />
+              </div>
+              <div className="hero-shot-caption">
+                <span>FlowTeam</span>
+                <span>COLLABORATION</span>
               </div>
             </HoverFrame>
             <span className="visual-coordinate mono" aria-hidden="true">
@@ -166,13 +183,7 @@ export function Home({ locale }: { locale: Locale }) {
                 <div className="project-image-frame">
                   <Image
                     src={project.image}
-                    alt={
-                      project.slug === 'businessos'
-                        ? project.gallery[0].alt[locale]
-                        : locale === 'es'
-                          ? 'Home real de Atelier Commerce con su colección editorial'
-                          : 'Actual Atelier Commerce home and editorial collection'
-                    }
+                    alt={projectCoverAlt(project, locale)}
                     fill
                     sizes="(max-width: 800px) 92vw, 720px"
                     quality={85}
