@@ -19,14 +19,14 @@ The first release uploaded tracked runtime source to Vercel's REST API, then cre
 
 The existing Vercel account has no GitHub integration. As a result, GitHub Actions runs on push, but a push alone currently does **not** update production. To enable automatic releases later, connect only cristoferdiazalvarez/developer-portfolio in this project's Git settings after reviewing the integration permissions. This is optional and has not been performed. Alternatively, authenticate to Vercel and deploy this same project using its official CLI/API; confirm Hobby, project identity and tracked publication contents first. Never target the existing application projects or enable a paid option.
 
-After each application release, verify the public origin, /en and four case routes; canonical/hreflang, robots, sitemap, social image, localized 404s and image assets. Run the 26 browser tests against the real domain:
+After approval and release of the three-project candidate, verify the public origin, /en and six case routes; canonical/hreflang, robots, sitemap, social image, localized 404s and image assets. Run the 57 browser tests against the real domain only after that approved release:
 
 ```sh
 PLAYWRIGHT_BASE_URL=https://developer-portfolio-plum-mu.vercel.app npm run test:e2e
 PREVIEW_URL=https://developer-portfolio-plum-mu.vercel.app npm run screenshots
 ```
 
-These commands target the public deployment and do not launch a local server. Current results: 26 tests passed; HTTP/TLS/metadata checks passed. See public-verification.json and VERIFICATION.md.
+These commands target the public deployment and do not launch a local server. Historical November 13 production results: 26 tests passed; HTTP/TLS/metadata checks passed. The current three-project review candidate passes 57 checks locally and remains undeployed. See public-verification.json and VERIFICATION.md.
 
 There are no migrations or application seeds. All portfolio text is static, and the screenshots refer to independently hosted demo applications. No Stripe, authentication or database credentials belong in this project's environment.
 
