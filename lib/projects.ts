@@ -455,6 +455,156 @@ export const projects: Project[] = [
       },
     ],
   },
+  {
+    slug: 'nexora',
+    name: 'NEXORA',
+    number: '04',
+    category: {
+      es: 'SAAS · EXPRESS & MONGODB',
+      en: 'SAAS · EXPRESS & MONGODB',
+    },
+    subtitle: {
+      es: 'Una visión clara de clientes, catálogo y facturación.',
+      en: 'A clear view of customers, catalog and invoicing.',
+    },
+    summary: {
+      es: 'Un SaaS empresarial con organizaciones independientes, sesiones seguras y facturas calculadas en servidor, publicado con React, Express y MongoDB.',
+      en: 'A business SaaS with independent organizations, secure sessions and server-calculated invoices, deployed with React, Express and MongoDB.',
+    },
+    problem: {
+      es: 'Clientes, catálogo y facturas deben compartir un flujo coherente sin mezclar datos de distintas empresas. Los permisos y los importes necesitan validarse en el servidor, incluso cuando se manipula una petición del navegador.',
+      en: 'Customers, catalog and invoices need a coherent workflow without mixing data between companies. Permissions and amounts must be validated on the server, including when a browser request is manipulated.',
+    },
+    approach: {
+      es: 'Construí un monorepo React/Vite y Express con TypeScript. La API obtiene empresa y rol de la sesión y limita cada operación en MongoDB. El frontend y su proxy se alojan en Vercel Hobby; la API usa Render Free y una base Atlas M0 independiente.',
+      en: 'I built a React/Vite and Express monorepo with TypeScript. The API resolves organization and role from the session and scopes every MongoDB operation. The frontend and its proxy run on Vercel Hobby, with the API on Render Free and an independent Atlas M0 database.',
+    },
+    scope: {
+      es: 'Interfaz, API, aislamiento empresarial, facturación y despliegue verificado.',
+      en: 'Interface, API, organization isolation, invoicing and verified deployment.',
+    },
+    tech: [
+      'React',
+      'TypeScript',
+      'Express',
+      'MongoDB',
+      'Vite',
+      'Tailwind CSS',
+      'Mongoose',
+      'TanStack Query',
+      'Zod',
+      'Vitest',
+      'Playwright',
+    ],
+    features: {
+      es: [
+        'Sesiones HttpOnly y roles por organización',
+        'Clientes, catálogo, facturas PDF e impuestos configurables',
+        'Dashboard real, filtros y diseño claro/oscuro responsive',
+      ],
+      en: [
+        'HttpOnly sessions and organization-scoped roles',
+        'Customers, catalog, PDF invoices and configurable taxes',
+        'Live dashboard, filters and responsive light/dark interface',
+      ],
+    },
+    architecture: [
+      'Browser',
+      'React + Vite',
+      'Vercel proxy',
+      'Express API · Render',
+      'MongoDB Atlas',
+    ],
+    decisions: [
+      {
+        title: {
+          es: 'Una sesión, un origen web',
+          en: 'One session, one web origin',
+        },
+        body: {
+          es: 'El navegador llama a /api en el mismo origen. Un proxy de servidor conserva la cookie __Host- con Secure, HttpOnly y SameSite=Lax, y autentica su acceso a Render con un secreto que nunca llega al cliente.',
+          en: 'The browser calls /api on the same origin. A server proxy preserves a __Host- cookie with Secure, HttpOnly and SameSite=Lax, and authenticates to Render using a secret that never reaches the client.',
+        },
+      },
+      {
+        title: {
+          es: 'La empresa no la elige el navegador',
+          en: 'The browser does not choose the organization',
+        },
+        body: {
+          es: 'La sesión determina usuario, rol y empresa. Consultas, escrituras, estadísticas y PDF incorporan ese límite. Las pruebas de producción comprueban dos empresas independientes y el acceso de un empleado sin permisos de escritura.',
+          en: 'The session determines user, role and organization. Queries, writes, statistics and PDFs apply that boundary. Production tests exercise two independent companies and an employee without write permissions.',
+        },
+      },
+      {
+        title: {
+          es: 'Importes exactos antes del PDF',
+          en: 'Exact amounts before the PDF',
+        },
+        body: {
+          es: 'La API descarta los totales enviados y calcula con céntimos enteros, puntos básicos y BigInt en los pasos intermedios. El PDF usa el resultado validado y una instantánea del emisor y del cliente.',
+          en: 'The API ignores submitted totals and calculates using integer cents, basis points and BigInt for intermediate operations. The PDF uses the validated result and snapshots of issuer and customer details.',
+        },
+      },
+    ],
+    results: {
+      es: [
+        'Aplicación pública por HTTPS con persistencia en Atlas.',
+        'Registro, login/logout, CRUD, PDF, roles y aislamiento probados en producción.',
+        '20 pruebas de unidad/integración y dos flujos E2E; capturas reales con información ficticia.',
+      ],
+      en: [
+        'Public HTTPS application backed by persistent Atlas data.',
+        'Registration, login/logout, CRUD, PDF, roles and isolation tested in production.',
+        '20 unit/integration tests and two E2E flows; real screenshots with fictional information.',
+      ],
+    },
+    limits: {
+      es: 'Demo de portfolio con datos ficticios, sin cobros online ni certificación fiscal del PDF. El registro crea una empresa propia; no se publican contraseñas administrativas. No incluye recuperación de contraseña y Render Free puede tardar en despertar tras inactividad. Las comprobaciones automáticas de accesibilidad no certifican conformidad completa.',
+      en: 'Portfolio demo with fictional data, no online charges and no fiscal certification for its PDFs. Registration creates a separate company; administrator passwords are not published. Password recovery is not included, and Render Free may take time to wake after inactivity. Automated accessibility checks do not certify full conformance.',
+    },
+    demo: 'https://nexora-eta-steel.vercel.app',
+    repo: 'https://github.com/cristoferdiazalvarez/nexora',
+    docs: 'https://github.com/cristoferdiazalvarez/nexora/blob/main/docs/DEPLOYMENT.md',
+    image: '/projects/nexora-dashboard.webp',
+    mobile: '/projects/nexora-mobile.webp',
+    tone: 'violet',
+    coverAlt: {
+      es: 'Dashboard real de NEXORA publicado, con datos ficticios de Estudio Horizonte',
+      en: 'Actual published NEXORA dashboard with fictional Estudio Horizonte data',
+    },
+    verified: {
+      es: 'Flujos completos comprobados sobre la URL pública el 16 de noviembre de 2026.',
+      en: 'Complete flows checked against the public URL on November 16, 2026.',
+    },
+    gallery: [
+      {
+        src: '/projects/nexora-invoices.webp',
+        alt: {
+          es: 'Listado real de facturas de NEXORA con importes y estados de pago ficticios',
+          en: 'Actual NEXORA invoices with fictional amounts and payment statuses',
+        },
+        caption: {
+          es: 'Facturas persistentes, búsqueda, estados de pago y descarga PDF desde la aplicación publicada.',
+          en: 'Persistent invoices, search, payment statuses and PDF download in the published application.',
+        },
+        ratio: '1440 / 1238',
+      },
+      {
+        src: '/projects/nexora-mobile.webp',
+        alt: {
+          es: 'NEXORA en móvil con navegación y tabla de facturas',
+          en: 'Mobile NEXORA with navigation and invoice table',
+        },
+        caption: {
+          es: 'Captura real a 390 píxeles; la tabla conserva desplazamiento horizontal propio sin desbordar la página.',
+          en: 'Actual 390-pixel capture; the table retains its own horizontal scrolling without overflowing the page.',
+        },
+        ratio: '390 / 1210',
+        layout: 'mobile',
+      },
+    ],
+  },
 ];
 export function getProject(slug: string) {
   return projects.find((project) => project.slug === slug);

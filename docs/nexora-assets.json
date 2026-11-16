@@ -1,0 +1,29 @@
+{
+  "source": "https://nexora-eta-steel.vercel.app",
+  "capturedAt": "2026-11-16T15:03:16.807Z",
+  "fictionalDataOnly": true,
+  "processing": "WebP encoding of actual production screenshots; no generated or reconstructed interface.",
+  "assets": [
+    {
+      "source": "production-dashboard.png",
+      "file": "public/projects/nexora-dashboard.webp",
+      "width": 1440,
+      "height": 1353,
+      "sha256": "2d5b6898757ca70fb520c1660e6c351d1bcf5636bd7aec3778e005af20b0757e"
+    },
+    {
+      "source": "production-invoices.png",
+      "file": "public/projects/nexora-invoices.webp",
+      "width": 1440,
+      "height": 1238,
+      "sha256": "182d8cf399a6e7399a2d0f87ca5f5deef7358cd3193f161714e2d55c202452b3"
+    },
+    {
+      "source": "production-mobile.png",
+      "file": "public/projects/nexora-mobile.webp",
+      "width": 390,
+      "height": 1210,
+      "sha256": "1cc591b62ee3c528be802ba56619fc3f0606888c7533393c028d3b3393886cc9"
+    }
+  ]
+}

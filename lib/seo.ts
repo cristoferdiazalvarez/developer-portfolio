@@ -2,8 +2,8 @@ import type { Metadata } from 'next';
 import { profile, siteUrl, homePath, projectPath, type Locale } from './config';
 import type { Project } from './projects';
 const description = {
-  es: 'Cristofer Díaz Álvarez, Full Stack Developer en Tenerife. Tres aplicaciones publicadas: BusinessOS, Atelier Commerce y FlowTeam, con Next.js, TypeScript y PostgreSQL.',
-  en: 'Cristofer Díaz Álvarez, Full Stack Developer in Tenerife. Three published applications: BusinessOS, Atelier Commerce and FlowTeam, built with Next.js, TypeScript and PostgreSQL.',
+  es: 'Cristofer Díaz Álvarez, Full Stack Developer en Tenerife. Cuatro aplicaciones publicadas: BusinessOS, Atelier Commerce, FlowTeam y NEXORA, con React, TypeScript, PostgreSQL y MongoDB.',
+  en: 'Cristofer Díaz Álvarez, Full Stack Developer in Tenerife. Four published applications: BusinessOS, Atelier Commerce, FlowTeam and NEXORA, built with React, TypeScript, PostgreSQL and MongoDB.',
 };
 export function pageMetadata(locale: Locale, project?: Project): Metadata {
   const base = siteUrl();

@@ -2,7 +2,7 @@
 
 [![Verify](https://github.com/cristoferdiazalvarez/developer-portfolio/actions/workflows/ci.yml/badge.svg)](https://github.com/cristoferdiazalvarez/developer-portfolio/actions/workflows/ci.yml)
 
-A bilingual personal portfolio for a Full Stack Developer based in Tenerife, Spain, seeking junior opportunities in Tenerife and remote work from Spain. Built around three published applications, their source code, architectural decisions and honest demo boundaries.
+A bilingual personal portfolio for a Full Stack Developer based in Tenerife, Spain, seeking junior opportunities in Tenerife and remote work from Spain. Built around four published applications, their source code, architectural decisions and honest demo boundaries.
 
 ![Spanish home, captured from the production build](docs/screenshots/home-preview.png)
 
@@ -10,7 +10,7 @@ A bilingual personal portfolio for a Full Stack Developer based in Tenerife, Spa
 
 - An original graphite, ivory and citrus editorial interface with self-hosted typography.
 - Complete Spanish and English homes and case studies; switching languages preserves the selected project.
-- Authentic screenshots of [BusinessOS](https://businessos-web-five.vercel.app), [Atelier Commerce](https://atelier-commerce-two.vercel.app) and [FlowTeam](https://flowteam-ten.vercel.app), with links to source and live demos.
+- Authentic screenshots of [BusinessOS](https://businessos-web-five.vercel.app), [Atelier Commerce](https://atelier-commerce-two.vercel.app) [FlowTeam](https://flowteam-ten.vercel.app) and [NEXORA](https://nexora-eta-steel.vercel.app), with links to source and live demos.
 - Case studies explain problems, architecture, decisions, verifiable outcomes and limitations. Demo figures are fictional; no employment history or business metrics are invented.
 - Keyboard skip link, native mobile dialog with focus handling, reduced motion support, semantic landmarks and responsive images.
 - Localized metadata, generated Open Graph image, Person/CreativeWork structured data, robots and domain-aware sitemap/canonical URLs.
@@ -22,7 +22,7 @@ GitHub and the owner-confirmed LinkedIn profile are available contact channels. 
 
 Next.js App Router, React, strict TypeScript, Tailwind CSS 4, Motion and Lucide. Fonts are served locally through Fontsource. Vitest covers content/configuration contracts; Playwright and axe exercise the production build.
 
-Two localized root layouts set the actual document language. Shared components render data from `lib/copy.ts` and `lib/projects.ts`. Next.js prerenders eight localized content pages (two homes and six case-study routes); unmatched routes render localized 404s. [Architecture](docs/ARCHITECTURE.md) · [Asset provenance](docs/SOURCES.md).
+Two localized root layouts set the actual document language. Shared components render data from `lib/copy.ts` and `lib/projects.ts`. Next.js prerenders ten localized content pages (two homes and eight case-study routes); unmatched routes render localized 404s. [Architecture](docs/ARCHITECTURE.md) · [Asset provenance](docs/SOURCES.md).
 
 ## Run locally
 

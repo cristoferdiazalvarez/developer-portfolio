@@ -29,7 +29,12 @@ describe('truthful portfolio content and SEO', () => {
       ]);
   });
   it('keeps real projects, complete translations and screenshot files', () => {
-    expect(projects.map((p) => p.slug)).toEqual(['businessos', 'atelier-commerce', 'flowteam']);
+    expect(projects.map((p) => p.slug)).toEqual([
+      'businessos',
+      'atelier-commerce',
+      'flowteam',
+      'nexora',
+    ]);
     for (const project of projects) {
       expect(project.repo).toMatch(/^https:\/\/github.com\/cristoferdiazalvarez\//);
       expect(project.demo).toMatch(/^https:\/\/.+\.vercel\.app$/);
@@ -68,8 +73,8 @@ describe('truthful portfolio content and SEO', () => {
     );
     expect(workSchema(projects[0], 'en').author.name).toBe(profile.name);
   });
-  it('cycles through all three projects in order without losing original demo links', () => {
-    expect(projects.map((p) => p.number)).toEqual(['01', '02', '03']);
+  it('cycles through all four projects in order without losing original demo links', () => {
+    expect(projects.map((p) => p.number)).toEqual(['01', '02', '03', '04']);
     expect(projects.slice(0, 2).map((p) => [p.slug, p.demo, p.repo])).toEqual([
       [
         'businessos',
@@ -85,7 +90,8 @@ describe('truthful portfolio content and SEO', () => {
     for (const [from, to] of [
       ['businessos', 'atelier-commerce'],
       ['atelier-commerce', 'flowteam'],
-      ['flowteam', 'businessos'],
+      ['flowteam', 'nexora'],
+      ['nexora', 'businessos'],
     ])
       expect(nextProject(from)?.slug).toBe(to);
     expect(nextProject('unknown')).toBeUndefined();
@@ -106,12 +112,12 @@ describe('truthful portfolio content and SEO', () => {
       expect(projectCoverAlt(flow, locale)).toContain('FlowTeam');
       expect(projectCoverAlt(flow, locale)).not.toContain('Atelier');
       expect(flow.gallery.every((i) => i.alt[locale] && i.caption[locale])).toBe(true);
-      expect(copy[locale].work.intro).toMatch(locale === 'es' ? /^Tres/ : /^Three/);
+      expect(copy[locale].work.intro).toMatch(locale === 'es' ? /^Cuatro/ : /^Four/);
     }
     expect(alternatePath('/proyectos/flowteam')).toBe('/en/projects/flowteam');
     expect(alternatePath('/en/projects/flowteam')).toBe('/proyectos/flowteam');
   });
-  it('includes FlowTeam in localized canonical/social/schema data and all eight sitemap routes', () => {
+  it('includes FlowTeam in localized canonical/social/schema data and all ten sitemap routes', () => {
     process.env.NEXT_PUBLIC_SITE_URL = 'https://portfolio.example';
     const flow = getProject('flowteam')!;
     for (const locale of ['es', 'en'] as const) {
@@ -135,7 +141,7 @@ describe('truthful portfolio content and SEO', () => {
       });
     }
     const routes = sitemap().map((r) => r.url);
-    expect(routes).toHaveLength(8);
+    expect(routes).toHaveLength(10);
     expect(routes).toContain('https://portfolio.example/proyectos/flowteam');
     expect(routes).toContain('https://portfolio.example/en/projects/flowteam');
   });

@@ -1,5 +1,13 @@
 # Vercel deployment preparation
 
+## NEXORA release — 2026-11-16
+
+NEXORA was verified anonymously over HTTPS before this portfolio change: both full production E2E flows passed, including persistence, tenant isolation, employee permissions, PDF and mobile accessibility. Its live demo is https://nexora-eta-steel.vercel.app and source is https://github.com/cristoferdiazalvarez/nexora.
+
+The fourth bilingual card and case study use real production captures with fictional data; provenance is recorded in `nexora-assets.json`. The original three project objects were compared against production commit `cbcd0a71c759dc70a90e87216e2ef30655b596e9` and remain byte-for-byte equivalent as serialized data. Shared components, styles, original assets and their links are preserved. ES/EN counts, sitemap and regression expectations now cover four projects.
+
+Local validation: lint, strict TypeScript, formatting and nine unit tests passed. The production webpack build passed; local Turbopack was prevented by sandbox process/port restrictions. The normal Vercel build command remains unchanged. All 63 updated browser checks plus six new NEXORA-specific checks passed locally (69 total). Public release results will be recorded after actual deployment; older three-project candidate statements below describe historical stages.
+
 Status: published and independently verified at https://developer-portfolio-plum-mu.vercel.app (Spanish) and https://developer-portfolio-plum-mu.vercel.app/en (English).
 
 The owner approved a new isolated resource in the existing Vercel Hobby account with a zero-cost boundary: no paid service, card, billing activation or plan upgrade. The plan remained Hobby after deployment; other Vercel projects were compared before/after and stayed unchanged.

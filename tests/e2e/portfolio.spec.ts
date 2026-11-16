@@ -19,7 +19,7 @@ for (const [locale, home, workPath] of [
     await page.goto(home);
     await expect(page.locator('html')).toHaveAttribute('lang', locale);
     await expect(page.getByRole('heading', { level: 1 })).toContainText('Full Stack');
-    await expect(page.locator('.project-card')).toHaveCount(3);
+    await expect(page.locator('.project-card')).toHaveCount(4);
     expect(await page.locator('a[href^="mailto:"]').count()).toBe(0);
     await expect(page.getByRole('link', { name: 'LinkedIn', exact: true })).toHaveAttribute(
       'href',
@@ -61,6 +61,9 @@ for (const [locale, home, workPath] of [
     await expect(page.locator('.case-boundary')).toContainText(/polling/);
     await expect(page.locator('.case-cover img')).toHaveAttribute('alt', /FlowTeam/);
     await expect(page.locator('.case-gallery figure')).toHaveCount(3);
+    await next.click();
+    await expect(page.getByRole('heading', { name: 'NEXORA.', exact: true })).toBeVisible();
+    await expect(page.locator('.case-boundary')).toContainText(/Render Free/);
     await next.click();
     await expect(page.getByRole('heading', { name: 'BusinessOS.', exact: true })).toBeVisible();
   });
@@ -113,6 +116,46 @@ for (const [locale, home, workPath] of [
     await expect(page).toHaveURL(locale === 'es' ? '/en/projects/flowteam' : '/proyectos/flowteam');
     await expect(page.locator('html')).toHaveAttribute('lang', locale === 'es' ? 'en' : 'es');
   });
+  test(`${locale}: NEXORA case has verified links, translated navigation and loaded images`, async ({
+    page,
+  }) => {
+    await page.goto(`${workPath}nexora`);
+    await expect(page).toHaveTitle(/NEXORA/);
+    await expect(page.locator('.case-cover img')).toHaveAttribute('alt', /NEXORA/);
+    await expect(
+      page.getByRole('link', { name: locale === 'es' ? 'Abrir demo' : 'Open demo', exact: true }),
+    ).toHaveAttribute('href', 'https://nexora-eta-steel.vercel.app');
+    await expect(
+      page.getByRole('link', {
+        name: locale === 'es' ? 'Explorar repositorio' : 'Explore repository',
+        exact: true,
+      }),
+    ).toHaveAttribute('href', 'https://github.com/cristoferdiazalvarez/nexora');
+    for (const image of await page.locator('.case-gallery img').all()) {
+      await image.scrollIntoViewIfNeeded();
+      await expect
+        .poll(() =>
+          image.evaluate(
+            (el) => (el as HTMLImageElement).complete && (el as HTMLImageElement).naturalWidth > 0,
+          ),
+        )
+        .toBe(true);
+    }
+    const schema = JSON.parse(
+      (await page.locator('script[type="application/ld+json"]').textContent()) || '{}',
+    );
+    expect(schema.name).toBe('NEXORA');
+    expect(schema.sameAs).toEqual([
+      'https://nexora-eta-steel.vercel.app',
+      'https://github.com/cristoferdiazalvarez/nexora',
+    ]);
+    await page
+      .getByRole('link', {
+        name: locale === 'es' ? 'EN · Read in English' : 'ES · Leer en español',
+      })
+      .click();
+    await expect(page).toHaveURL(locale === 'es' ? '/en/projects/nexora' : '/proyectos/nexora');
+  });
   test(`${locale}: keyboard skip, navigation and mobile dialog`, async ({ page, isMobile }) => {
     await page.goto(home);
     await page.keyboard.press('Tab');
@@ -144,6 +187,7 @@ for (const [locale, home, workPath] of [
     `${workPath}businessos`,
     `${workPath}atelier-commerce`,
     `${workPath}flowteam`,
+    `${workPath}nexora`,
   ]) {
     test(`${locale}: responsive accessibility ${path}`, async ({ page }) => {
       await page.goto(path);
@@ -170,14 +214,14 @@ test('reduced motion, truthful metadata and a custom missing-page state', async 
   expect(records.some((r) => r['@type'] === 'Person' && r.name === 'Cristofer Díaz Álvarez')).toBe(
     true,
   );
-  expect(records.filter((r) => r['@type'] === 'CreativeWork')).toHaveLength(3);
+  expect(records.filter((r) => r['@type'] === 'CreativeWork')).toHaveLength(4);
   await page.goto('/a-route-that-does-not-exist');
   await expect(page.getByRole('heading', { level: 1 })).toContainText('Este camino');
   await page.goto('/en/a-route-that-does-not-exist');
   await expect(page.getByRole('heading', { level: 1 })).toContainText('This path');
 });
 for (const locale of ['es', 'en'] as const) {
-  test(`${locale}: all three cards and cases preserve demo/repository destinations`, async ({
+  test(`${locale}: all four cards and cases preserve demo/repository destinations`, async ({
     page,
   }) => {
     for (const [slug, name, demo, repo] of [
@@ -198,6 +242,12 @@ for (const locale of ['es', 'en'] as const) {
         'FlowTeam',
         'https://flowteam-ten.vercel.app',
         'https://github.com/cristoferdiazalvarez/flowteam',
+      ],
+      [
+        'nexora',
+        'NEXORA',
+        'https://nexora-eta-steel.vercel.app',
+        'https://github.com/cristoferdiazalvarez/nexora',
       ],
     ]) {
       await page.goto(locale === 'es' ? '/' : '/en');
@@ -226,6 +276,8 @@ test('external controls have real destinations and image assets load', async ({ 
     'https://github.com/cristoferdiazalvarez/businessos-erp',
     'https://github.com/cristoferdiazalvarez/atelier-commerce',
     'https://github.com/cristoferdiazalvarez/flowteam',
+    'https://nexora-eta-steel.vercel.app',
+    'https://github.com/cristoferdiazalvarez/nexora',
   ])
     expect(await page.locator(`a[href="${href}"]`).count()).toBeGreaterThan(0);
   const images = page.locator('.hero-visual img');
@@ -250,7 +302,7 @@ test('external controls have real destinations and image assets load', async ({ 
   if (xml.includes('<loc>')) {
     expect(xml).toContain('/proyectos/flowteam');
     expect(xml).toContain('/en/projects/flowteam');
-    expect((xml.match(/<loc>/g) || []).length).toBe(8);
+    expect((xml.match(/<loc>/g) || []).length).toBe(10);
   }
 });
 
