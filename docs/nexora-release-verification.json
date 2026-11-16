@@ -1,0 +1,22 @@
+{
+  "checkedAt": "2026-11-16T15:23:17.469437+00:00",
+  "sourceCommit": "e985d469d7f81c7e4db1437bd2ccb31785eb34ea",
+  "deploymentId": "dpl_BJdyJKqsJmqDo8wQWUsBooF8DPCX",
+  "url": "https://developer-portfolio-plum-mu.vercel.app",
+  "plan": "hobby",
+  "productionE2e": {
+    "passed": 69,
+    "failed": 0,
+    "duration": "1.4m",
+    "devices": ["desktop", "tablet", "mobile"],
+    "locales": ["es", "en"],
+    "anonymousPublicAccess": true
+  },
+  "candidateE2ePassed": 69,
+  "ci": "https://github.com/cristoferdiazalvarez/developer-portfolio/actions/runs/43894933259",
+  "ciConclusion": "success",
+  "originalThreeProjectDataPreserved": true,
+  "nexoraVerifiedBeforePortfolioUpdate": true,
+  "billingActivated": false,
+  "paidResourcesCreated": false
+}
