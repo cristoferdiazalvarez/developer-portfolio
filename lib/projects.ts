@@ -605,6 +605,98 @@ export const projects: Project[] = [
       },
     ],
   },
+  {
+    slug: 'devdesk',
+    name: 'DevDesk',
+    number: '05',
+    category: { es: 'HELPDESK SAAS · SOPORTE TÉCNICO', en: 'HELPDESK SAAS · TECHNICAL SUPPORT' },
+    subtitle: {
+      es: 'Incidencias claras, soporte organizado.',
+      en: 'Clear issues, organized support.',
+    },
+    summary: {
+      es: 'Plataforma de soporte con tickets, prioridades, conversación, permisos por rol y un panel conectado a PostgreSQL.',
+      en: 'Support platform with tickets, priorities, conversations, role permissions and a PostgreSQL-backed dashboard.',
+    },
+    problem: {
+      es: 'Un equipo de soporte necesita seguir incidencias sin perder el contexto ni exponer información de otros clientes. El sistema debe distinguir entre quien solicita ayuda y quien la gestiona.',
+      en: 'Support teams need to track issues without losing context or exposing other customers’ information. The system must distinguish between people requesting support and those managing it.',
+    },
+    approach: {
+      es: 'Construí un frontend React y TypeScript con una API Express independiente. PostgreSQL y Prisma conservan tickets, comentarios e historial. Las sesiones con cookies HttpOnly, Zod y las comprobaciones de rol en la API delimitan qué puede consultar o modificar cada persona.',
+      en: 'I built a React and TypeScript frontend with a separate Express API. PostgreSQL and Prisma persist tickets, comments and history. HttpOnly cookie sessions, Zod and server-side role checks determine what each person can read or change.',
+    },
+    scope: {
+      es: 'Frontend, API REST, autenticación, tickets, persistencia, pruebas y despliegue.',
+      en: 'Frontend, REST API, authentication, tickets, persistence, tests and deployment.',
+    },
+    tech: ['React', 'TypeScript', 'Vite', 'Node.js', 'Express', 'PostgreSQL', 'Prisma', 'Zod', 'Playwright', 'GitHub Actions'],
+    features: {
+      es: ['Dashboard y filtros de tickets', 'Roles cliente, agente y administrador', 'Comentarios, prioridades e historial'],
+      en: ['Dashboard and ticket filters', 'Customer, agent and administrator roles', 'Comments, priorities and event history'],
+    },
+    architecture: ['Browser', 'React + Vite', 'Express API · Render', 'Prisma', 'PostgreSQL · Neon'],
+    decisions: [
+      {
+        title: { es: 'El permiso se comprueba en la API', en: 'Authorization is checked in the API' },
+        body: {
+          es: 'El acceso a tickets depende del rol y la asignación; las notas internas se reservan al personal de soporte. La demo pública se presenta en modo solo lectura.',
+          en: 'Ticket access depends on role and assignment; internal notes are restricted to support staff. The public demo is presented in read-only mode.',
+        },
+      },
+      {
+        title: { es: 'Frontend y servidor independientes', en: 'Independent frontend and server' },
+        body: {
+          es: 'Vercel sirve React por HTTPS, Render ejecuta Express y Neon conserva la información en PostgreSQL. Las migraciones se aplican antes del arranque del servicio.',
+          en: 'Vercel serves React over HTTPS, Render runs Express and Neon stores data in PostgreSQL. Database migrations run before the service starts.',
+        },
+      },
+    ],
+    results: {
+      es: [
+        'Frontend en Vercel y API en Render desplegados por HTTPS.',
+        'Migraciones Prisma aplicadas y datos ficticios disponibles en Neon.',
+        'GitHub Actions pasó las verificaciones de tipo, lint, tests, build y Playwright.',
+      ],
+      en: [
+        'Frontend on Vercel and API on Render deployed over HTTPS.',
+        'Prisma migrations applied with fictional data available in Neon.',
+        'GitHub Actions passed type checking, lint, tests, build and Playwright.',
+      ],
+    },
+    limits: {
+      es: 'Proyecto personal con datos ficticios. La demo pública es de solo lectura y no representa una operación de atención al cliente real. La disponibilidad de Render Free puede variar tras periodos de inactividad. La captura de portada es una ilustración de la interfaz, no una captura de producción.',
+      en: 'Personal project with fictional data. The public demo is read-only and does not represent a live customer support operation. Render Free availability may vary after inactivity. The cover image is an interface illustration, not a production screenshot.',
+    },
+    demo: 'https://devdesk-theta.vercel.app/',
+    repo: 'https://github.com/cristoferdiazalvarez/devdesk',
+    docs: 'https://github.com/cristoferdiazalvarez/devdesk/blob/main/docs/api.md',
+    image: '/projects/devdesk-illustration.svg',
+    mobile: '/projects/devdesk-illustration.svg',
+    tone: 'violet',
+    coverAlt: {
+      es: 'Ilustración de un panel de soporte DevDesk con tarjetas y tickets ficticios',
+      en: 'Illustration of a DevDesk support dashboard with fictional cards and tickets',
+    },
+    verified: {
+      es: 'Frontend y API desplegados; migraciones verificadas el 18 de noviembre de 2026.',
+      en: 'Frontend and API deployed; migrations verified on 18 November 2026.',
+    },
+    gallery: [
+      {
+        src: '/projects/devdesk-illustration.svg',
+        alt: {
+          es: 'Ilustración editorial del dashboard de DevDesk',
+          en: 'Editorial illustration of the DevDesk dashboard',
+        },
+        caption: {
+          es: 'Ilustración de presentación; la interfaz auténtica puede explorarse en la demo pública.',
+          en: 'Presentation illustration; explore the actual interface in the public demo.',
+        },
+        ratio: '1440 / 900',
+      },
+    ],
+  },
 ];
 export function getProject(slug: string) {
   return projects.find((project) => project.slug === slug);
